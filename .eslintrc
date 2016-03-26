@@ -1,0 +1,52 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    // We do not want commas after the last item in an array/object
+    "comma-dangle": [0],
+    // This convention {thing} instead of { thing }
+    "object-curly-spacing": [0],
+    // We use single quotes (not double which is the default)
+    "jsx-quotes": [2, "prefer-single"],
+    // We do not add space before the closing bracket of our components e.g. <Hello/> (ok) vs <Hello /> (required)
+    "react/jsx-space-before-closing": [0],
+    //Our convention does not require that uppercase letter funtions only be used as constructors
+    "new-cap": [0],
+    // We want to only write variable declarations once
+    "one-var": [0],
+    // There are various places where we edit out params (check server.js).  Generally best to avoid doing so
+    "no-param-reassign": [0],
+    // Sometimes returning something is not necessary (e.g. if a redirect is required)
+    "consistent-return": [0],
+    // Don"t want to forbid usage of {} around arrow body because sometimes it can get confusing
+    "arrow-body-style": [0],
+    // Don"t require stateless components when we don't deal with state
+    "react/prefer-stateless-function": [0],
+    // We want to pass boolean values into props
+    "react/jsx-boolean-value": [2, "always"],
+    // We will allow multiple components to be declared in one file but it is not best practice
+    "react/no-multi-comp": [0],
+    // Increase the max line length to 160
+    "max-len": [2, 160, 4, {"ignoreUrls": true}],
+    // Space before function parentheses is not required
+    "space-before-function-paren": [0],
+    // There are some cases where valid code is being picked up as an unused expression
+    "no-unused-expressions": [0],
+    // Sometimes we add many stars to a comment line to make it stand out more
+    "spaced-comment": [2, "always", {
+      "block": {
+        "exceptions": ["*"]
+      }
+    }],
+    // There are times when a use before define is inevitable
+    "no-use-before-define": [0],
+    // There are times when we want to use new (e.g. beginning a promise change)
+    "no-new": [0],
+    "no-new-func": [0]
+  }
+}

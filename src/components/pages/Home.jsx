@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {autobind} from 'core-decorators';
 import serialize from 'form-serialize';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 
 class Task extends React.Component {
   static propTypes = {
@@ -43,7 +43,7 @@ class Home extends React.Component {
     return (
       <div>
         <form onSubmit={this.addTask}>
-          <label>Task Name:</label>
+          <label className='test-font'>Task Name:</label>
           <input type='text' name='task'/>
           <input type='submit'/>
         </form>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute, Link } from 'react-router';
-import Home from './components/Home';
+import Home from './components/pages/Home';
 
 const App = ({children}) => (
   <div>
