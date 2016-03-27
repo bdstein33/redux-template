@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute, Link } from 'react-router';
 import Home from './components/pages/Home';
+import Container from './components/shared/Container';
 
 const App = ({children}) => (
   <div>
@@ -21,7 +22,7 @@ const Foo = () => (<div>Foo!</div>);
 const Bar = () => (<div>Bar!</div>);
 
 const routes = (
-  <Route path='/' component={App}>
+  <Route path='/' component={Container}>
     <IndexRoute component={Home}/>
     <Route path='foo' component={Foo}/>
     <Route path='bar' component={Bar}/>

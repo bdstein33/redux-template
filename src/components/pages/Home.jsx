@@ -50,6 +50,7 @@ class Home extends React.Component {
         {this.props.tasks.map((task, index) => {
           return <Task key={index} index={index} task={task} removeTask={this.props.actions.removeTask}/>;
         })}
+        <div className='modal' />
       </div>
     );
   }
