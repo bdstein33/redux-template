@@ -1,5 +1,5 @@
 @import "./colors";
-
+@import "./modal";
 * {
   margin: 0;
 }
@@ -22,10 +22,17 @@ a, a:visited, a:hover, a:active {
   margin-right: auto;
 }
 
-.test-font {
-  color: red;
-  font-size: 20px;
+.text-center {
+  text-align: center;
 }
+
+.hide {
+  display: none;
+}
+
+
+
+
 
 .topnav {
   height: 40px;

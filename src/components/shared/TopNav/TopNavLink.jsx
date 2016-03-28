@@ -15,10 +15,17 @@ class TopNavLink extends React.Component {
   }
 
   render() {
+    const {
+      label,
+      href,
+      float,
+      ...otherProps
+    } = this.props;
+
     return (
-      <Link href={this.props.href}>
-        <div className={classNames('topnav-link', this.props.float)}>
-        {this.props.label}
+      <Link href={href} {...otherProps}>
+        <div className={classNames('topnav-link', float)}>
+          {label}
         </div>
       </Link>
     );

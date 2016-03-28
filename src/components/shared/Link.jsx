@@ -4,16 +4,12 @@ import {Link as RouterLink} from 'react-router';
 class Link extends React.Component {
   static propTypes = {
     href: React.PropTypes.string,
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.node
-    ])
+    children: React.PropTypes.node
   };
 
   static defaultProps = {
     href: null
   }
-
 
   render() {
     const {
@@ -26,9 +22,9 @@ class Link extends React.Component {
       return <a href={href} {...otherProps}></a>;
     } else if (href) {
       return <RouterLink to={href} {...otherProps}>{children}</RouterLink>;
-    } else {
-      return<div {...otherProps}>{children}</div>;
     }
+
+    return <div {...otherProps}>{children}</div>;
   }
 }
 

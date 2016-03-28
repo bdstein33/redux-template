@@ -10,7 +10,7 @@ const initialState = window.__data;
 const store = configureStore(browserHistory, initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
-localStorage.debug = '*';
+// localStorage.debug = '*';
 
 render(
   <Provider store={store}>
