@@ -1,5 +1,8 @@
-@import "./colors";
-@import "./modal";
+@import './colors';
+@import './modal';
+@import './form';
+@import './components';
+
 * {
   margin: 0;
 }
@@ -29,28 +32,3 @@ a, a:visited, a:hover, a:active {
 .hide {
   display: none;
 }
-
-
-
-
-
-.topnav {
-  height: 40px;
-  width: 100%;
-  border-bottom: 2px solid grey;
-}
-
-.topnav-link {
-  cursor: pointer;
-  height: 100%;
-  line-height: 40px;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: center;
-  width: 75px;
-
-  &:hover {
-    background-color: grey;
-  }
-}
-

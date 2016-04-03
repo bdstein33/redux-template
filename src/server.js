@@ -3,8 +3,10 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackConfig from '../webpack.dev.config.js';
 
-// Express Configuration
+// Server Configuration
 import express from 'express';
+import bodyParser from 'body-parser'
+// import db from '../db';
 // import morgan from 'morgan';
 
 // React/Redux Requirements
@@ -22,6 +24,17 @@ const debug = Debug('server'),
   server = express(),
   port = process.env.PORT || 3000;
 
+/******************************
+EXPRESS CONFIGURATION
+******************************/
+
+server.use('/public', express.static(path.join(__dirname, '../build')));
+server.use(bodyParser.json());
+
+/******************************
+API ROUTES
+******************************/
+server.use('/api/auth', require('../api/endpoints/auth'));
 
 /******************************
 HOT MODULE RELOADING
@@ -37,8 +50,6 @@ if (process.env.NODE_ENV === 'development') {
 
   server.use(require('webpack-hot-middleware')(compiler));
 }
-
-server.use('/public', express.static(path.join(__dirname, '../build')));
 
 /******************************
 ISOMORPHIC RENDERING

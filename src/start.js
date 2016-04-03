@@ -1,9 +1,19 @@
 require('localenv');
+
+const path = require('path');
+
 require('babel-register')({
-  only: [__dirname]
+  only: [
+    __dirname,
+    path.resolve(__dirname, '../db'),
+    path.resolve(__dirname, '../api')
+  ]
 });
 
-var Debug = require('debug');
+const Debug = require('debug');
 Debug.enable(process.env.DEBUG);
 
-require('./server');
+const db = require('../db');
+db.sequelize.sync().then(() => {
+  require('./server');
+});

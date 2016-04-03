@@ -15,9 +15,9 @@ export default (history, initialState) => {
     initialState,
     compose(
       applyMiddleware(
-        routerMiddleware(history),
-        thunk,
-        logger
+        routerMiddleware(history), // routing
+        thunk, // async function actions
+        logger // outputs action data
       )
     )
   );
