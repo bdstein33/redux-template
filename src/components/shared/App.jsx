@@ -1,8 +1,8 @@
 import React from 'react';
 import TopNav from './TopNav';
-import Modal from './Modal';
+import Modal from './Modal/Modal';
 
-class Container extends React.Component {
+class App extends React.Component {
   static propTypes = {
     children: React.PropTypes.node
   };
@@ -20,4 +20,4 @@ class Container extends React.Component {
   }
 }
 
-export default Container;
+export default App;

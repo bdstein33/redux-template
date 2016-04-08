@@ -5,7 +5,7 @@ import Link from '../Link';
 
 class TopNavLink extends React.Component {
   static propTypes = {
-    label: React.PropTypes.string,
+    label: React.PropTypes.string.isRequired,
     href: React.PropTypes.string,
     float: React.PropTypes.string
   }

@@ -2,13 +2,31 @@ import React from 'react';
 import {autobind} from 'core-decorators';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import classNames from 'classnames';
 
-import * as actions from '../../actions';
+import * as modalActions from '../../../actions';
+import ModalTitle from './ModalTitle';
 
 class Modal extends React.Component {
   static propTypes = {
     modal: React.PropTypes.object.isRequired,
     actions: React.PropTypes.object.isRequired
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  @autobind
+  handleKeyDown(e) {
+    e.preventDefault();
+    if (e.keyCode === 27) { // Esc
+      this.props.actions.hideModal();
+    }
   }
 
   @autobind
@@ -21,15 +39,19 @@ class Modal extends React.Component {
   render() {
     const {
       modal,
+      actions,
       ...otherProps
     } = this.props;
 
     return (
-      <div className={!modal.visible ? 'hide' : ''}>
+      <div className={classNames('test', !modal.visible ? 'hide' : '')}>
         <div className='modal-page-background'>
         </div>
         <div className='modal-container' onClick={this.hideModal}>
-          {modal.body}
+          <div className='modal'>
+            {modal.title && <ModalTitle hideModal={actions.hideModal} text={modal.title} />}
+            {modal.body}
+          </div>
         </div>
       </div>
     );
@@ -44,7 +66,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(modalActions, dispatch)
   };
 }
 

@@ -1,6 +1,7 @@
 const initialState = {
   visible: false,
-  body: null
+  body: null,
+  title: null,
 };
 
 export default (state = initialState, action) => {
@@ -8,12 +9,14 @@ export default (state = initialState, action) => {
     case 'SHOW_MODAL':
       return Object.assign({}, state, {
         visible: true,
-        body: action.body
+        body: action.body,
+        title: action.title
       });
     case 'HIDE_MODAL':
       return Object.assign({}, state, {
         visible: false,
-        body: null
+        body: null,
+        title: null
       });
     default:
       return state;

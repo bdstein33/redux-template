@@ -8,7 +8,7 @@ import * as actions from '../../actions';
 import Form from '../shared/Form/Form';
 import TextInput from '../shared/Form/TextInput';
 import Submit from '../shared/Form/Submit';
-import SignUp from './SignUp';
+import LogIn from './LogIn';
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -17,33 +17,35 @@ function mapDispatchToProps(dispatch) {
 }
 
 @connect(null, mapDispatchToProps)
-class LogIn extends React.Component {
+class SignUp extends React.Component {
   static propTypes = {
     actions: React.PropTypes.object
   };
 
   @autobind
-  submitLogIn(data) {
+  submitSignup(data) {
     console.log(data);
   }
 
   @autobind
-  showSignUp() {
-    this.props.actions.showModal(<SignUp />, 'Sign Up');
+  showLogIn() {
+    this.props.actions.showModal(<LogIn />, 'Log In');
   }
 
   render() {
     return (
-      <div className='content-container modal-login'>
-        <Form onSubmit={this.submitLogIn}>
-          <TextInput name='email' placeholder='Email' autoComplete='off'/>
+      <div className='content-container modal-signup'>
+        <Form onSubmit={this.submitSignup}>
+          <TextInput name='firstName' placeholder='First Name'/>
+          <TextInput name='lastName' placeholder='Last Name'/>
+          <TextInput name='email' placeholder='Email'/>
           <TextInput name='password' type='password' placeholder='Password'/>
-          <Submit value='Log In'/>
+          <Submit value='Sign Up'/>
         </Form>
 
         <div className='bottom'>
           <p>
-            Don't have an account? <span onClick={this.showSignUp} className='text-link'>Sign up</span>
+            Already have an account? <span onClick={this.showLogIn} className='text-link'>Log In</span>
           </p>
         </div>
 
@@ -52,4 +54,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn;
+export default SignUp;

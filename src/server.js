@@ -5,7 +5,7 @@ import webpackConfig from '../webpack.dev.config.js';
 
 // Server Configuration
 import express from 'express';
-import bodyParser from 'body-parser'
+import bodyParser from 'body-parser';
 // import db from '../db';
 // import morgan from 'morgan';
 
