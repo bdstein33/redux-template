@@ -1,11 +1,7 @@
-export function showModal(body, title) {
-  return dispatch => {
-    dispatch({type: 'SHOW_MODAL', body, title});
-  };
-}
+import * as authActions from './auth';
+import * as modalActions from './modal';
 
-export function hideModal() {
-  return dispatch => {
-    dispatch({type: 'HIDE_MODAL'});
-  };
-}
+export default {
+  authActions,
+  modalActions
+};

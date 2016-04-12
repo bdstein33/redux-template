@@ -5,7 +5,7 @@ import storeConnect from '../../addons/storeConnect';
 
 import TopNavLink from './TopNavLink';
 import LogIn from '../../modal/LogIn';
-import * as actions from '../../../actions';
+import {modalActions} from '../../../actions';
 
 class TopNav extends React.Component {
   static propTypes = {
@@ -29,4 +29,4 @@ class TopNav extends React.Component {
   }
 }
 
-export default storeConnect(null, actions)(TopNav);
+export default storeConnect(null, modalActions)(TopNav);

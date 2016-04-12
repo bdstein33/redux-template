@@ -3,7 +3,7 @@ import {autobind} from 'core-decorators';
 
 import storeConnect from '../../addons/storeConnect';
 
-import * as modalActions from '../../../actions';
+import {modalActions} from '../../../actions';
 import ModalTitle from './ModalTitle';
 
 class Modal extends React.Component {
