@@ -1,8 +1,7 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 
+import storeConnect from '../addons/storeConnect';
 import * as actions from '../../actions';
 
 import Form from '../shared/Form/Form';
@@ -10,13 +9,7 @@ import TextInput from '../shared/Form/TextInput';
 import Submit from '../shared/Form/Submit';
 import LogIn from './LogIn';
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
-@connect(null, mapDispatchToProps)
+@storeConnect(null, actions)
 class SignUp extends React.Component {
   static propTypes = {
     actions: React.PropTypes.object

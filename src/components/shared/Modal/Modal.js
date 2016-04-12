@@ -1,8 +1,7 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import classNames from 'classnames';
+
+import storeConnect from '../../addons/storeConnect';
 
 import * as modalActions from '../../../actions';
 import ModalTitle from './ModalTitle';
@@ -24,7 +23,7 @@ class Modal extends React.Component {
   @autobind
   handleKeyDown(e) {
     if (e.keyCode === 8 && this.props.modal.visible) { // Backspace
-        e.preventDefault();
+      e.preventDefault();
     } else if (e.keyCode === 27) { // Esc
       this.props.actions.hideModal();
     }
@@ -59,19 +58,4 @@ class Modal extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    modal: state.modal
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(modalActions, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Modal);
+export default storeConnect(['modal'], modalActions)(Modal);

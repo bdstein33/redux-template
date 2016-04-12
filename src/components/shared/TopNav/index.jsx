@@ -1,22 +1,15 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+
+import storeConnect from '../../addons/storeConnect';
 
 import TopNavLink from './TopNavLink';
 import LogIn from '../../modal/LogIn';
 import * as actions from '../../../actions';
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
-@connect(null, mapDispatchToProps)
 class TopNav extends React.Component {
   static propTypes = {
-    actions: React.PropTypes.object
+    actions: React.PropTypes.object.isRequired
   };
 
   @autobind
@@ -36,4 +29,4 @@ class TopNav extends React.Component {
   }
 }
 
-export default TopNav;
+export default storeConnect(null, actions)(TopNav);

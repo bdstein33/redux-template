@@ -1,8 +1,7 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 
+import storeConnect from '../addons/storeConnect';
 import * as actions from '../../actions';
 
 import Form from '../shared/Form/Form';
@@ -10,20 +9,9 @@ import TextInput from '../shared/Form/TextInput';
 import Submit from '../shared/Form/Submit';
 import SignUp from './SignUp';
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
-@connect(null, mapDispatchToProps)
 class LogIn extends React.Component {
-  static contextTypes = {
-    store: React.PropTypes.object.isRequired,
-  };
-  
   static propTypes = {
-    actions: React.PropTypes.object
+    actions: React.PropTypes.object.isRequired
   };
 
   @autobind
@@ -56,4 +44,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn;
+export default storeConnect(null, actions)(LogIn);
