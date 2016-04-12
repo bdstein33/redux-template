@@ -23,8 +23,9 @@ class Modal extends React.Component {
 
   @autobind
   handleKeyDown(e) {
-    e.preventDefault();
-    if (e.keyCode === 27) { // Esc
+    if (e.keyCode === 8 && this.props.modal.visible) { // Backspace
+        e.preventDefault();
+    } else if (e.keyCode === 27) { // Esc
       this.props.actions.hideModal();
     }
   }
@@ -44,7 +45,7 @@ class Modal extends React.Component {
     } = this.props;
 
     return (
-      <div className={classNames('test', !modal.visible ? 'hide' : '')}>
+      <div className={!modal.visible ? 'hide' : 'show'}>
         <div className='modal-page-background'>
         </div>
         <div className='modal-container' onClick={this.hideModal}>

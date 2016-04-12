@@ -18,6 +18,10 @@ function mapDispatchToProps(dispatch) {
 
 @connect(null, mapDispatchToProps)
 class LogIn extends React.Component {
+  static contextTypes = {
+    store: React.PropTypes.object.isRequired,
+  };
+  
   static propTypes = {
     actions: React.PropTypes.object
   };

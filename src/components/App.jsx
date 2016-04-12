@@ -1,6 +1,6 @@
 import React from 'react';
-import TopNav from './TopNav';
-import Modal from './Modal/Modal';
+import TopNav from './shared/TopNav';
+import Modal from './shared/Modal/Modal';
 
 class App extends React.Component {
   static propTypes = {
