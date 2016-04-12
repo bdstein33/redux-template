@@ -6,7 +6,7 @@ function objectToString(obj) {
   const output = [];
 
   for (const key in obj) {
-    output.push(`${key} of ${obj[key]}`);
+    output.push(`${key} ${obj[key]}`);
   }
 
   return output.join(' and ');

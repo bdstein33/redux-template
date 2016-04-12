@@ -1,8 +1,8 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
-
+import {merge} from 'lodash';
 import storeConnect from '../addons/storeConnect';
-import {modalActions} from '../../actions';
+import {modalActions, authActions} from '../../actions';
 
 import Form from '../shared/Form/Form';
 import TextInput from '../shared/Form/TextInput';
@@ -17,6 +17,7 @@ class SignUp extends React.Component {
   @autobind
   submitSignup(data) {
     console.log(data);
+    this.props.actions.signUp(data);
   }
 
   @autobind
@@ -46,4 +47,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default storeConnect(null, modalActions)(SignUp);
+export default storeConnect(null, modalActions, authActions)(SignUp);

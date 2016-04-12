@@ -3,6 +3,6 @@ import endpointLoader from '../../util/endpointLoader';
 
 const router = express.Router();
 
-router.post('/', endpointLoader('auth/signup'));
+router.post('/', endpointLoader('auth/signUp'));
 
 export default router;

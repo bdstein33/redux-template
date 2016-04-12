@@ -1,18 +1,15 @@
+import authService from '../services/auth';
 
 
-
-export function showModal(body, title) {
+export function signUp(data) {
   return dispatch => {
-    dispatch({type: 'SHOW_MODAL', body, title});
+    console.log('START');
+    dispatch({type: 'START_LOGIN'});
+
+    authService.signUp(data)
+      .then(result => {
+        console.log('GFFF');
+        console.log(result);
+      });
   };
-}
-
-export function hideModal() {
-  return dispatch => {
-    dispatch({type: 'HIDE_MODAL'});
-  };
-}
-
-export function signUp() {
-
 }

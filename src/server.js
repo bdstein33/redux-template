@@ -27,7 +27,6 @@ const debug = Debug('server'),
 /******************************
 EXPRESS CONFIGURATION
 ******************************/
-
 server.use('/public', express.static(path.join(__dirname, '../build')));
 server.use(bodyParser.json());
 
