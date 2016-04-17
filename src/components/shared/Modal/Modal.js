@@ -47,11 +47,14 @@ class Modal extends React.Component {
 
     return (
       <div className={!modal.visible ? 'hide' : 'show'}>
-        <div className='modal-page-background'>
+        <div className='modal__page-background'>
         </div>
-        <div className='modal-container' onClick={this.hideModal}>
+        <div className='modal__container ' onClick={this.hideModal}>
           <div className='modal'>
             {modal.title && <ModalTitle hideModal={actions.hideModal} text={modal.title} />}
+            <div className='modal__error'>
+             {modal.error}
+            </div>
             {modal.body}
           </div>
         </div>

@@ -2,6 +2,7 @@ const initialState = {
   visible: false,
   body: null,
   title: null,
+  error: null
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +17,12 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         visible: false,
         body: null,
-        title: null
+        title: null,
+        error: null
+      });
+    case 'MODAL_ERROR':
+      return Object.assign({}, state, {
+        error: action.error
       });
     default:
       return state;

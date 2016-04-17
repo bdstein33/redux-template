@@ -1,4 +1,4 @@
-.modal-page-background {
+.modal__page-background {
   position: fixed;
   left: 0;
   top: 0;
@@ -23,7 +23,7 @@
   -webkit-transition: opacity 4s ease-out;
 }
 
-.modal-container {
+.modal__container {
   position: fixed;
   left: 0;
   top: 0;
@@ -31,6 +31,13 @@
   width: 100%;
   height: 100%;
   z-index: 300;
+}
+
+.modal__error {
+  color: $red-5;
+  height: 14px;
+  font-size: 14px;
+  text-align: left;
 }
 
 .modal {
