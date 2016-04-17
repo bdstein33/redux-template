@@ -10,8 +10,10 @@ import {
 } from '../../util';
 
 export default (context, input) => {
+  console.log(input);
   return isValid(input, userSchema, ['firstName', 'lastName', 'email', 'password'])
     .then(() => {
+      console.log('XXXX');
       return DBQuery.getOne(
         context,
         'user',

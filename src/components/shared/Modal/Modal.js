@@ -22,7 +22,9 @@ class Modal extends React.Component {
 
   @autobind
   handleKeyDown(e) {
-    if (e.keyCode === 8 && this.props.modal.visible) { // Backspace
+    if (e.keyCode === 8 &&
+    this.props.modal.visible &&
+    document.activeElement.nodeName !== 'INPUT') { // Backspace
       e.preventDefault();
     } else if (e.keyCode === 27) { // Esc
       this.props.actions.hideModal();
