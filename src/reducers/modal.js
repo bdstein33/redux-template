@@ -24,6 +24,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         error: action.error
       });
+    case 'SIGNUP__ERROR':
+      return Object.assign({}, state, {
+        error: action.error
+      });
     default:
       return state;
   }

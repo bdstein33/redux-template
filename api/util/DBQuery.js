@@ -12,6 +12,11 @@ function objectToString(obj) {
   return output.join(' and ');
 }
 
+function formatModelName(model) {
+  console.log(model.charAt(0).toUpperCase() + model.split(/(?=[A-Z])/).join(' ').slice(1).toLowerCase());
+  return model.charAt(0).toUpperCase() + model.split(/(?=[A-Z])/).join(' ').slice(1).toLowerCase();
+}
+
 export default {
   /**
    * Returns formatted results from sequelize query
@@ -37,9 +42,9 @@ export default {
     }).then(result => {
       return new Promise((resolve, reject) => {
         if (!result && queryOptions.error === 'DoesNotExist') {
-          reject(new Error(`${model} with ${objectToString(queryOptions.where)} does not exist`));
+          reject(new Error(`${formatModelName(model)} with ${objectToString(queryOptions.where)} does not exist`));
         } else if (result && queryOptions.error === 'AlreadyExists') {
-          reject(new Error(`${model} with ${objectToString(queryOptions.where)} already exists`));
+          reject(new Error(`${formatModelName(model)} with ${objectToString(queryOptions.where)} already exists`));
         } else if (result && !queryOptions.sequelizeObject) {
           resolve(plain(result));
         } else {

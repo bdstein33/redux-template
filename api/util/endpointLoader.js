@@ -11,11 +11,6 @@ export default controllerName => {
       input = Object.keys(req.query).length ? req.query : req.body,
       sanatizedInput = sanitizeInput(_.cloneDeep(input));
 
-      console.log('testing')
-      console.log(input);
-      console.log(req.query);
-      console.log(req.body);
-
     return new Promise(resolve => {
       resolve(db.sequelize.transaction(transaction => {
         context.transaction = transaction;

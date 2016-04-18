@@ -1,15 +1,10 @@
 import authService from '../services/auth';
-
+import actionCreator from '../util/actionCreator';
 
 export function signUp(data) {
-  return dispatch => {
-    console.log('START');
-    dispatch({type: 'START_LOGIN'});
-
-    authService.signUp(data)
-      .then(result => {
-        console.log('GFFF');
-        console.log(result);
-      });
-  };
+  return actionCreator('SIGNUP', data, authService.signUp);
+    // .then(result => {
+    //   console.log('XXXX');
+    //   console.log(result);
+    // })
 }
