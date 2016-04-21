@@ -1,7 +1,9 @@
+import {ajax} from 'jquery';
+
 const endpointMapper = {
   signUp: {
     url: 'auth',
-    method: 'post'
+    method: 'POST'
   }
 };
 
@@ -13,19 +15,32 @@ export default (serviceFunc, data) => {
   }
 
   const requestObj = {
-    method: endpoint.method,
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
+    url: `/api/${endpoint.url}`,
+    type: endpoint.method,
+    dataType: 'json',
+    contentType: 'application/json'
   };
 
-  if (endpoint.method === 'post') {
-    requestObj.body = JSON.stringify(data);
+  if (endpoint.method === 'POST') {
+    requestObj.data = JSON.stringify(data);
   }
-  return fetch(`/api/${endpoint.url}`, requestObj)
-    .then(response => {
-      return response.json().then(output => {
-        return output;
-      });
-    });
+
+  console.log('REQUEST OBJ: ', requestObj);
+  return ajax(requestObj)
+    .done(result => {
+      console.log('AAAA');
+      console.log(result);
+      return result;
+    })
+    // .fail(result => {
+    //   console.log('BBBB');
+    //   console.log(result);
+    //   return result.responseJSON;
+    // })
+//   return fetch(`/api/${endpoint.url}`, requestObj)
+//     .then(response => {
+//       return response.json().then(output => {
+//         return output;
+//       });
+//     });
 };

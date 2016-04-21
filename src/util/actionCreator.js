@@ -6,12 +6,13 @@ export default (name, data, actionFunc) => {
     dispatch({type: `${name}__START`});
     return actionFunc.call(this, data)
      .then(result => {
+      console.log(result);
        if (result.error) {
          dispatch({type: `${name}__ERROR`, error: result.error});
-         return Promise.reject(result);
+       } else {
+         dispatch({type: `${name}`, data: result});
        }
 
-       dispatch({type: `${name}`, data: result});
        return result;
      });
   };

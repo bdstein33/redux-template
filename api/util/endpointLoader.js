@@ -10,7 +10,6 @@ export default controllerName => {
       endpoint = require(`../endpoints/${controllerName}`),
       input = Object.keys(req.query).length ? req.query : req.body,
       sanatizedInput = sanitizeInput(_.cloneDeep(input));
-
     return new Promise(resolve => {
       resolve(db.sequelize.transaction(transaction => {
         context.transaction = transaction;
@@ -20,7 +19,7 @@ export default controllerName => {
     }).then(output => {
       return res.json(output);
     }).catch(error => {
-      return res.status(400).send({error: error.message});
+      return res.json({error: error.message});
     });
   };
 };
