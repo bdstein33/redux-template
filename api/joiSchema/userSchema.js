@@ -4,5 +4,5 @@ export default {
   firstName: Joi.string(),
   lastName: Joi.string(),
   email: Joi.string().min(7).max(32),
-  password: Joi.string()
+  password: Joi.string().min(7).max(32)
 };

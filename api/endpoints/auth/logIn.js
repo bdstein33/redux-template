@@ -20,13 +20,14 @@ export default (context, input) => {
         }
       );
     }).then(user => {
-      console.log('CHECKING: ', input.password, user.password);
       return PasswordEncryptor.check(input.password, user.password)
         .then(result => {
+          console.log('RETURNED RESULT: ', result);
           if (!result) {
-            Promise.reject(new Error('Invalid login credentials'));
+            console.log('REJECT');
+            return Promise.reject(new Error('Invalid login credentials'));
           }
-
+          console.log('STILL RETURN');
           return _.omit(user, 'password');
         });
     });
