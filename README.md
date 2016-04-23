@@ -1,10 +1,11 @@
 # To Do:
 
 
-- Connect server endpoints to client (with ajax)
 - Close modal when click on darkened background
-- Fix modal errors to take up two lines
+- Handle successful login/signup and make sure auth routing works properly
 - SCSS linting
 - Tests for endpoints
 - Add scopes to models (in particular password vs regular scope for user)
+- Fix joiSchema names to not be camel case
 - Read up on sessions
+- Add icon library

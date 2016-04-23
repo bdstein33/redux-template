@@ -5,12 +5,11 @@ import {
 import {
   DBQuery,
   isValid,
-  PasswordEncryptor,
-  plain
+  PasswordEncryptor
 } from '../../util';
 
 export default (context, input) => {
-  return isValid(input, userSchema, ['firstName', 'lastName', 'email', 'password'])
+  return isValid(input, userSchema, ['email', 'password'])
     .then(() => {
       return DBQuery.getOne(
         context,
@@ -21,13 +20,14 @@ export default (context, input) => {
         }
       );
     }).then(user => {
+      console.log('CHECKING: ', input.password, user.password);
       return PasswordEncryptor.check(input.password, user.password)
         .then(result => {
           if (!result) {
             Promise.reject(new Error('Invalid login credentials'));
           }
 
-          return _.omit(plain(user), 'password');
+          return _.omit(user, 'password');
         });
     });
 };

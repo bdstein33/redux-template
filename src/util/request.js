@@ -1,9 +1,13 @@
 import {ajax} from 'jquery';
 
 const endpointMapper = {
-  signUp: {
+  SIGNUP: {
     url: 'auth',
     method: 'POST'
+  },
+  LOGIN: {
+    url: 'auth',
+    method: 'GET'
   }
 };
 
@@ -12,35 +16,17 @@ export default (serviceFunc, data) => {
 
   if (!endpoint) {
     console.error(`Invalid service request: ${serviceFunc}`);
+    return null;
   }
 
   const requestObj = {
     url: `/api/${endpoint.url}`,
-    type: endpoint.method,
-    dataType: 'json',
-    contentType: 'application/json'
+    type: endpoint.method
   };
 
-  if (endpoint.method === 'POST') {
-    requestObj.data = JSON.stringify(data);
+  if (data) {
+    requestObj.data = data;
   }
 
-  console.log('REQUEST OBJ: ', requestObj);
-  return ajax(requestObj)
-    .done(result => {
-      console.log('AAAA');
-      console.log(result);
-      return result;
-    })
-    // .fail(result => {
-    //   console.log('BBBB');
-    //   console.log(result);
-    //   return result.responseJSON;
-    // })
-//   return fetch(`/api/${endpoint.url}`, requestObj)
-//     .then(response => {
-//       return response.json().then(output => {
-//         return output;
-//       });
-//     });
+  return ajax(requestObj);
 };

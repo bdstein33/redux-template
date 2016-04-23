@@ -21,7 +21,6 @@ class TopNav extends React.Component {
     return (
       <div className='topnav'>
         <TopNavLink href='/' label='Home' />
-        <TopNavLink href='/todo' label='To Do' />
         <TopNavLink href='/foo' label='Foo' />
         <TopNavLink label='Log In' float='right' onClick={this.showLogin}/>
       </div>

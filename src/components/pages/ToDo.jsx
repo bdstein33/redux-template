@@ -55,19 +55,19 @@ class ToDo extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    tasks: state.tasks
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     tasks: state.tasks
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(actions, dispatch)
+//   };
+// }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ToDo);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(ToDo);

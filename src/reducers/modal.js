@@ -11,7 +11,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         visible: true,
         body: action.body,
-        title: action.title
+        title: action.title,
+        error: null
       });
     case 'HIDE_MODAL':
       return Object.assign({}, state, {
@@ -25,6 +26,10 @@ export default (state = initialState, action) => {
         error: action.error
       });
     case 'SIGNUP__ERROR':
+      return Object.assign({}, state, {
+        error: action.error
+      });
+    case 'LOGIN__ERROR':
       return Object.assign({}, state, {
         error: action.error
       });

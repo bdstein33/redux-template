@@ -26,7 +26,6 @@ export default (store) => {
   return (
     <Route path='/' component={App}>
       <IndexRoute component={Home}/>
-      <Route path='todo' component={ToDo}/>
       <Route path='foo' component={Foo}/>
       <Route onEnter={requireLogin}>
         <Route path='bar' component={Bar}/>

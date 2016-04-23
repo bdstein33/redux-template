@@ -1,7 +1,7 @@
-import tasks from './tasks';
 import modal from './modal';
+import application from './application';
 
 export default {
-  tasks,
-  modal
+  modal,
+  application
 };

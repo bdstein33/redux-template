@@ -10,6 +10,7 @@ export default controllerName => {
       endpoint = require(`../endpoints/${controllerName}`),
       input = Object.keys(req.query).length ? req.query : req.body,
       sanatizedInput = sanitizeInput(_.cloneDeep(input));
+
     return new Promise(resolve => {
       resolve(db.sequelize.transaction(transaction => {
         context.transaction = transaction;

@@ -2,7 +2,7 @@ import React from 'react';
 import {autobind} from 'core-decorators';
 
 import storeConnect from '../addons/storeConnect';
-import {modalActions} from '../../actions';
+import {modalActions, authActions} from '../../actions';
 
 import Form from '../shared/Form/Form';
 import TextInput from '../shared/Form/TextInput';
@@ -16,7 +16,7 @@ class LogIn extends React.Component {
 
   @autobind
   submitLogIn(data) {
-    console.log(data);
+    this.props.actions.logIn(data);
   }
 
   @autobind
@@ -44,4 +44,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default storeConnect(null, modalActions)(LogIn);
+export default storeConnect(null, modalActions, authActions)(LogIn);

@@ -29,6 +29,7 @@ EXPRESS CONFIGURATION
 ******************************/
 server.use('/public', express.static(path.join(__dirname, '../build')));
 server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({extended: false}))
 
 /******************************
 API ROUTES
