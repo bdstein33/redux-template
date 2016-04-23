@@ -6,11 +6,11 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN':
       return Object.assign({}, state, {
-        user: action.user,
+        user: action.data,
       });
     case 'SIGNUP':
       return Object.assign({}, state, {
-        user: action.user,
+        user: action.data,
       });
     case 'LOGOUT':
       return Object.assign({}, state, {

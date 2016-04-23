@@ -9,7 +9,8 @@ import {modalActions} from '../../../actions';
 
 class TopNav extends React.Component {
   static propTypes = {
-    actions: React.PropTypes.object.isRequired
+    actions: React.PropTypes.object.isRequired,
+    application: React.PropTypes.object
   };
 
   @autobind
@@ -22,10 +23,15 @@ class TopNav extends React.Component {
       <div className='topnav'>
         <TopNavLink href='/' label='Home' />
         <TopNavLink href='/foo' label='Foo' />
-        <TopNavLink label='Log In' float='right' onClick={this.showLogin}/>
+        <TopNavLink href='/bar' label='Bar (Auth required)' />
+        {
+          !this.props.application.user ?
+            <TopNavLink label='Log In' float='right' onClick={this.showLogin}/> :
+            <TopNavLink label='Log Out' float='right' onClick={this.logOut}/>
+        }
       </div>
     );
   }
 }
 
-export default storeConnect(null, modalActions)(TopNav);
+export default storeConnect(['application'], modalActions)(TopNav);

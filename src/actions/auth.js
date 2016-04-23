@@ -6,7 +6,10 @@ export default {
   },
 
   logIn: (data) => {
-    return actionCreator('LOGIN', data);
+    return actionCreator('LOGIN', data, {
+      success: ['HIDE_MODAL'],
+      navigate: '/bar'
+    });
   }
 };
 

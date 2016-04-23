@@ -26,7 +26,6 @@ export default (input, joiSchema, requiredInputs, forbiddenInputs) => {
       const errorText = err.details.map(error => {
         return error.message;
       }).join(', ').replace(/['"]+/g, '');
-
       return Promise.reject(new Error(errorText));
     });
 };
