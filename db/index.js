@@ -37,5 +37,4 @@ combineModels(path.join(__dirname, 'models'))
   });
 
 db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
 export default db;
