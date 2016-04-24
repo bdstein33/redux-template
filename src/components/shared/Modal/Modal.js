@@ -33,7 +33,7 @@ class Modal extends React.Component {
 
   @autobind
   hideModal(e) {
-    if (e.target.className === 'modal__container') {
+    if (e.target.className.trim() === 'modal__container') {
       this.props.actions.hideModal();
     }
   }

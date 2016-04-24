@@ -18,7 +18,6 @@ export default controllerName => {
         return endpoint.call(null, context, sanatizedInput);
       }));
     }).then(output => {
-      console.log('XXX');
       return res.json(output);
     }).catch(error => {
       return res.json({error: error.message});
