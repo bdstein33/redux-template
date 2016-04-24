@@ -1,5 +1,5 @@
 import request from './request';
-import {browserHistory} from 'react-router';
+import navigate from './navigate';
 
 /**
  * Dispatches varous actions to help with lifecycle events and provides some additional functionality
@@ -34,7 +34,7 @@ export default (name, data, options = {}) => {
          }
 
          if (options.navigate) {
-           browserHistory.push(options.navigate);
+           navigate(options.navigate);
          }
        }
        return result;

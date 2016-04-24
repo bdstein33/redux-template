@@ -5,7 +5,7 @@ import storeConnect from '../../addons/storeConnect';
 
 import TopNavLink from './TopNavLink';
 import LogIn from '../../modal/LogIn';
-import {modalActions} from '../../../actions';
+import {modalActions, authActions} from '../../../actions';
 
 class TopNav extends React.Component {
   static propTypes = {
@@ -18,12 +18,17 @@ class TopNav extends React.Component {
     this.props.actions.showModal(<LogIn />, 'Log In');
   }
 
+  @autobind
+  logOut() {
+    this.props.actions.logOut();
+  }
+
   render() {
     return (
       <div className='topnav'>
         <TopNavLink href='/' label='Home' />
         <TopNavLink href='/foo' label='Foo' />
-        <TopNavLink href='/bar' label='Bar (Auth required)' />
+        <TopNavLink href='/bar' label='Bar' />
         {
           !this.props.application.user ?
             <TopNavLink label='Log In' float='right' onClick={this.showLogin}/> :
@@ -34,4 +39,4 @@ class TopNav extends React.Component {
   }
 }
 
-export default storeConnect(['application'], modalActions)(TopNav);
+export default storeConnect(['application'], modalActions, authActions)(TopNav);

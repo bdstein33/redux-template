@@ -8,6 +8,10 @@ const endpointMapper = {
   LOGIN: {
     url: 'auth',
     method: 'GET'
+  },
+  LOGOUT: {
+    url: 'session',
+    method: 'DELETE'
   }
 };
 

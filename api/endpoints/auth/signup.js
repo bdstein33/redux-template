@@ -26,6 +26,10 @@ export default (context, input) => {
       input.password = password;
       return context.db.user.create(input, {transaction: context.transaction});
     }).then(user => {
-      return _.omit(plain(user), 'password');
+      user = _.omit(plain(user), 'password');
+      // Add user to session
+      _.merge(context.session, {user});
+      
+      return user;
     });
 };

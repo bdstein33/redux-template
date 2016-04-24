@@ -5,8 +5,8 @@ import webpackConfig from '../webpack.dev.config.js';
 
 // Server Configuration
 import express from 'express';
+import session from 'express-session';
 import bodyParser from 'body-parser';
-// import db from '../db';
 // import morgan from 'morgan';
 
 // React/Redux Requirements
@@ -20,24 +20,12 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './store';
 import getRoutes from './routes';
 
-const debug = Debug('server'),
+const debug = Debug('Server'),
   server = express(),
   port = process.env.PORT || 3000;
 
 /******************************
-EXPRESS CONFIGURATION
-******************************/
-server.use('/public', express.static(path.join(__dirname, '../build')));
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({extended: false}))
-
-/******************************
-API ROUTES
-******************************/
-server.use('/api/auth', require('../api/endpoints/auth'));
-
-/******************************
-HOT MODULE RELOADING
+WEBPACK AND HMR
 ******************************/
 if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(webpackConfig);
@@ -52,11 +40,47 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 /******************************
+EXPRESS CONFIGURATION
+******************************/
+// Static files
+server.use('/public', express.static(path.join(__dirname, '../build')));
+
+// Request parsing
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({extended: false}));
+
+// Session
+server.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false, // don't resave session to store if it wasn't modified
+  rolling: true, // reset expiration to original maxAge on each request
+  cookie: {
+    maxAge: parseInt(process.env.MD_WEB_SESSION_AGE, 10)
+  },
+  saveUninitialized: true
+}));
+
+
+/******************************
+API ROUTES
+******************************/
+server.use('/api/auth', require('../api/endpoints/auth'));
+server.use('/api/session', require('../api/endpoints/session'));
+
+
+/******************************
 ISOMORPHIC RENDERING
 ******************************/
 server.use((req, res) => {
+  // If user exists on session (is logged in), pass user data to client
+  const initialState = {
+    application: {
+      user: req.session.user
+    }
+  };
+
   const memoryHistory = createMemoryHistory(req.url);
-  const store = configureStore(memoryHistory);
+  const store = configureStore(memoryHistory, initialState);
   const history = syncHistoryWithStore(memoryHistory, store);
 
   match({history, routes: getRoutes(store), location: req.url}, (error, redirectLocation, renderProps) => {

@@ -6,7 +6,7 @@ import sanitizeInput from './sanitizeInput';
 /* Wraps input submitted to API into payload object and returns output from promisified controller function */
 export default controllerName => {
   return (req, res) => {
-    const context = {db},
+    const context = {db, session: req.session},
       endpoint = require(`../endpoints/${controllerName}`),
       input = Object.keys(req.query).length ? req.query : req.body,
       sanatizedInput = sanitizeInput(_.cloneDeep(input));
@@ -18,6 +18,7 @@ export default controllerName => {
         return endpoint.call(null, context, sanatizedInput);
       }));
     }).then(output => {
+      console.log('XXX');
       return res.json(output);
     }).catch(error => {
       return res.json({error: error.message});

@@ -25,7 +25,13 @@ export default (context, input) => {
           if (!result) {
             return Promise.reject(new Error('Invalid login credentials'));
           }
-          return _.omit(user, 'password');
+
+          user = _.omit(user, 'password');
+
+          // Add user to session
+          _.merge(context.session, {user});
+
+          return user;
         });
     });
 };
