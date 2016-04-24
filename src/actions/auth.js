@@ -1,18 +1,18 @@
-import {actionCreator, navigate} from '../util';
+import {actionCreator} from '../util';
 
 
 export default {
   signUp: (data) => {
     return actionCreator('SIGNUP', data, {
       success: ['HIDE_MODAL'],
-      navigate: '/bar'
+      navigate: '/'
     });
   },
 
   logIn: (data) => {
     return actionCreator('LOGIN', data, {
       success: ['HIDE_MODAL'],
-      navigate: '/bar'
+      navigate: '/'
     });
   },
 

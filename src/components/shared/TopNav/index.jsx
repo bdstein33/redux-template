@@ -24,19 +24,19 @@ class TopNav extends React.Component {
   }
 
   render() {
+    const {user} = this.props.application;
     return (
       <div className='topnav'>
         {
-          !this.props.application.user ?
+          !user ?
             <div>
-              <TopNavLink href='/' label='Home' />
+              <TopNavLink href='/' label='LOGO' />
               <TopNavLink href='/foo' label='Foo' />
-              <TopNavLink href='/bar' label='Bar' />
               <TopNavLink label='Log In' float='right' onClick={this.showLogin}/>
             </div>
           :
             <div>
-              <TopNavLink label='Log Out' float='right' onClick={this.logOut}/>
+              <TopNavLink label={`${user.firstName} ${user.lastName}`} float='right' onClick={this.logOut} className='topnav-link-right'/>
             </div>
         }
       </div>

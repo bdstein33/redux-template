@@ -25,9 +25,15 @@ export default (propKeys, ...actions) => {
   }
 
   return Component => {
+    if (actions.length) {
+      return connect(
+        mapStateToProps,
+        mapDispatchToProps
+      )(Component);
+    }
+
     return connect(
-      mapStateToProps,
-      mapDispatchToProps
+      mapStateToProps
     )(Component);
   };
 };

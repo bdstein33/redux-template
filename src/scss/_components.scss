@@ -3,7 +3,7 @@
 }
 
 .topnav {
-  height: 40px;
+  height: 35px;
   width: 100%;
   border-bottom: 2px solid grey;
 }
@@ -11,13 +11,18 @@
 .topnav-link {
   cursor: pointer;
   height: 100%;
-  line-height: 40px;
+  line-height: 35px;
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
+  font-size: 14px;
   width: 75px;
 
   &:hover {
     background-color: grey;
   }
+}
+
+.topnav-link-right {
+  width: auto;
 }
