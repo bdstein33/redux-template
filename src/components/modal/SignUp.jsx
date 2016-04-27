@@ -27,7 +27,7 @@ class SignUp extends React.Component {
     return (
       <div className='content-container modal-signup'>
         <Form onSubmit={this.submitSignup}>
-          <TextInput name='firstName' placeholder='First Name'/>
+          <TextInput name='firstName' placeholder='First Name' autoFocus={true}/>
           <TextInput name='lastName' placeholder='Last Name'/>
           <TextInput name='email' placeholder='Email'/>
           <TextInput name='password' type='password' placeholder='Password'/>

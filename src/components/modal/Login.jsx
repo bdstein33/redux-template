@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {autobind} from 'core-decorators';
 
 import storeConnect from '../addons/storeConnect';
@@ -12,7 +13,7 @@ import SignUp from './SignUp';
 class LogIn extends React.Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
-  };
+  }
 
   @autobind
   submitLogIn(data) {
@@ -28,7 +29,7 @@ class LogIn extends React.Component {
     return (
       <div className='content-container modal-login'>
         <Form onSubmit={this.submitLogIn}>
-          <TextInput name='email' placeholder='Email' autoComplete='off'/>
+          <TextInput name='email' placeholder='Email' autoComplete='off' autoFocus={true}/>
           <TextInput name='password' type='password' placeholder='Password'/>
           <Submit value='Log In'/>
         </Form>
