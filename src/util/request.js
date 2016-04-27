@@ -12,6 +12,10 @@ const endpointMapper = {
   LOGOUT: {
     url: 'session',
     method: 'DELETE'
+  },
+  IFRAME: {
+    url: 'iframe',
+    method: 'GET'
   }
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {autobind} from 'core-decorators';
 
 import storeConnect from '../../addons/storeConnect';
+import request from '../../../util/request';
 
 class Home extends React.Component {
   static propTypes = {
@@ -10,7 +11,12 @@ class Home extends React.Component {
 
   componentDidMount() {
     document.addEventListener('click', this.handleClick);
-     this.refs.testFrame.contentDocument.body.innerHTML = 'Hello world';
+
+    request('IFRAME', {url: 'http://www.google.com'})
+      .then(result => {
+        console.log(result);
+        this.refs.testFrame.contentDocument.innerHTML = result;
+      });
   }
 
   componentWillUnmount() {

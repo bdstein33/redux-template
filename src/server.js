@@ -66,7 +66,7 @@ API ROUTES
 ******************************/
 server.use('/api/auth', require('../api/endpoints/auth'));
 server.use('/api/session', require('../api/endpoints/session'));
-
+server.use('/api/iframe', require('../api/endpoints/iframe'));
 
 /******************************
 ISOMORPHIC RENDERING
