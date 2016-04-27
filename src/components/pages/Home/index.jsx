@@ -8,13 +8,29 @@ class Home extends React.Component {
     application: React.PropTypes.object
   }
 
+  componentDidMount() {
+    document.addEventListener('click', this.handleClick);
+     this.refs.testFrame.contentDocument.body.innerHTML = 'Hello world';
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClick);
+  }
+
+  @autobind
+  handleClick(e) {
+   console.log(e.target);
+  }
+
+
+
   render() {
     const {user} = this.props.application;
 
     return (
       <div>
        {`Welcome ${user.firstName} ${user.lastName}`}
-       
+       <iframe ref='testFrame' style={{width: '80%', marginLeft: '10%', height: '700px'}}/>
       </div>
     );
   }
