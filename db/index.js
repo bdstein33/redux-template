@@ -3,6 +3,9 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import promisify from 'es6-promisify';
 import _ from 'lodash';
+import Debug from 'debug';
+
+const debug = Debug('Models');
 
 const sequelize = new Sequelize(
   process.env.MYSQL_DB,
@@ -17,8 +20,12 @@ const sequelize = new Sequelize(
 const db = {};
 
 const importModel = (fileName) => {
-  const model = sequelize.import(path.join(__dirname, 'models', fileName));
-  db[model.name] = model;
+  try {
+    const model = sequelize.import(path.join(__dirname, 'models', fileName));
+    db[model.name] = model;
+  } catch (error) {
+    debug(error);
+  }
 };
 
 const associateModel = (model, modelName) => {

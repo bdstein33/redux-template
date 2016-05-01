@@ -6,26 +6,24 @@ export default (sequelize, DataTypes) => {
       autoIncrement: true,
       type: DataTypes.INTEGER
     },
-    firstName: {
-      field: 'first_name',
+    sectionId: {
+      field: 'section_id',
+      type: DataTypes.INTEGER
+    },
+    name: {
+      field: 'name',
       type: DataTypes.STRING
     },
-    lastName: {
-      field: 'last_name',
-      type: DataTypes.STRING
-    },
-    email: {
-      type: DataTypes.STRING
-    },
-    password: {
+    content: {
+      field: 'content',
       type: DataTypes.STRING
     }
   };
 
   const methods = {
-    tableName: 'users',
+    tableName: 'faq_questions',
     timestamps: false
   };
 
-  return sequelize.define('user', schema, methods);
+  return sequelize.define('faqQuestion', schema, methods);
 };

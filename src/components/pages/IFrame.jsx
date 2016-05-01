@@ -1,10 +1,10 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
 
-import storeConnect from '../../addons/storeConnect';
-import request from '../../../util/request';
+import storeConnect from '../addons/storeConnect';
+import request from '../../util/request';
 
-class Home extends React.Component {
+class IFrame extends React.Component {
   static propTypes = {
     application: React.PropTypes.object
   }
@@ -12,10 +12,12 @@ class Home extends React.Component {
   componentDidMount() {
     document.addEventListener('click', this.handleClick);
 
-    request('IFRAME', {url: 'http://www.google.com'})
+    request('IFRAME', {url: 'http://www.cnn.com'})
       .then(result => {
         console.log(result);
-        this.refs.testFrame.contentDocument.innerHTML = result;
+
+        this.refs.testFrame.contentDocument.addEventListener('click', this.handleClick);
+        this.refs.testFrame.contentDocument.body.innerHTML = result;
       });
   }
 
@@ -25,7 +27,9 @@ class Home extends React.Component {
 
   @autobind
   handleClick(e) {
-   console.log(e.target);
+    e.preventDefault();
+    e.target.style.color = 'red';
+    console.log(e.target);
   }
 
 
@@ -42,7 +46,7 @@ class Home extends React.Component {
   }
 }
 
-export default storeConnect(['application'])(Home);
+export default storeConnect(['application'])(IFrame);
 
 /*
   <iframe src='https://www.optimizelyedit.com/http%3A%2F%2Fwww.google.com?optimizely_disable=true&optimizely_editor=true&optimizely_log=false&optimizely_include_innie=true&optimizely_cache_buster=1461566070001&optimizely_proxy_rewriter=true' style={{width: '100%', height: '700px'}}/>

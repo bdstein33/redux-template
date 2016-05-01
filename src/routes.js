@@ -3,9 +3,9 @@ import {Route, IndexRoute} from 'react-router';
 
 import App from './components/App';
 import Index from './components/pages/Index';
+import FaqList from './components/pages/FaqList';
 
 const Foo = () => (<div>Foo!</div>);
-const Bar = () => (<div>Bar!</div>);
 
 export default (store) => {
   function requireLogin(nextState, replaceState, callback) {
@@ -26,7 +26,7 @@ export default (store) => {
       <IndexRoute component={Index}/>
       <Route path='foo' component={Foo}/>
       <Route onEnter={requireLogin}>
-        <Route path='bar' component={Bar}/>
+        <Route path='faq/list' component={FaqList}/>
       </Route>
     </Route>
   );
