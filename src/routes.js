@@ -5,6 +5,8 @@ import App from './components/App';
 import Index from './components/pages/Index';
 import Faqs from './components/pages/Faqs';
 
+import faqActions from './actions/faq';
+
 export default (store) => {
   function requireLogin(nextState, replaceState, callback) {
     function checkAuth() {
@@ -17,12 +19,16 @@ export default (store) => {
     checkAuth();
   }
 
+  function test() {
+    faqActions.getUserFaqs({id: store.getState().application.user.id})(store.dispatch);
+  }
+
 
   return (
     <Route path='/' component={App}>
       <IndexRoute component={Index}/>
       <Route onEnter={requireLogin}>
-        <Route path='faqs' component={Faqs}/>
+        <Route path='faqs' component={Faqs} onEnter={test} />
       </Route>
     </Route>
   );

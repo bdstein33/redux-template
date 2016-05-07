@@ -30,11 +30,10 @@ class Faqs extends React.Component {
     return (
       <div>
         {
-          userFaqs.map(faq => {
-            return <FaqOverview faq={faq}/>;
+          userFaqs.map((faq, i) => {
+            return <FaqOverview faq={faq} key={`${i}`}/>;
           })
         }
-        <FaqOverview />
         <div onClick={this.download}>
           Click me to download FAQs
         </div>

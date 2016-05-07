@@ -1,10 +1,9 @@
 # To Do:
 
 - Tests for endpoints (dev optimization)
-- Cache login data in redis (dev optimization)
 
+- Refactor routes to be in their own file
 - Look into page flicker issue
-- Async nav
 
 - SCSS linting
 - Add scopes to models (in particular password vs regular scope for user)
