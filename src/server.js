@@ -7,6 +7,7 @@ import webpackConfig from '../webpack.dev.config.js';
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
+import redis from 'connect-redis';
 // import morgan from 'morgan';
 
 // React/Redux Requirements
@@ -22,7 +23,8 @@ import getRoutes from './routes';
 
 const debug = Debug('Server'),
   server = express(),
-  port = process.env.PORT || 3000;
+  port = process.env.PORT || 3000,
+  RedisStore = redis(session);;
 
 /******************************
 WEBPACK AND HMR
@@ -53,9 +55,13 @@ server.use(bodyParser.urlencoded({extended: false}));
 server.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false, // don't resave session to store if it wasn't modified
+  store: new RedisStore({
+    host: process.env.REDIS_SERVER,
+    port: process.env.REDIS_PORT
+  }),
   rolling: true, // reset expiration to original maxAge on each request
   cookie: {
-    maxAge: parseInt(process.env.MD_WEB_SESSION_AGE, 10)
+    maxAge: parseInt(process.env.SESSION_AGE, 10)
   },
   saveUninitialized: true
 }));

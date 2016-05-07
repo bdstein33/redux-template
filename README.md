@@ -1,14 +1,15 @@
 # To Do:
 
-- Close modal when click on darkened background
 - Tests for endpoints (dev optimization)
 - Cache login data in redis (dev optimization)
-- SCSS linting
+
 - Look into page flicker issue
+- Async nav
+
+- SCSS linting
 - Add scopes to models (in particular password vs regular scope for user)
 - Add model associations
 - Double check autoIncrement necessity
-- Fix joiSchema names to not be camel case
 - Add icon library
 - Documentation for functions -- figure out how to convert into pretty output
 
