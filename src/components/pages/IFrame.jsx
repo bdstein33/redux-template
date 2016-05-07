@@ -32,8 +32,6 @@ class IFrame extends React.Component {
     console.log(e.target);
   }
 
-
-
   render() {
     const {user} = this.props.application;
 

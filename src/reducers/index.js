@@ -1,7 +1,9 @@
-import modal from './modal';
 import application from './application';
+import faq from './faq';
+import modal from './modal';
 
 export default {
-  modal,
-  application
+  application,
+  faq,
+  modal
 };

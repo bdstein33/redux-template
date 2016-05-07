@@ -13,7 +13,6 @@ function objectToString(obj) {
 }
 
 function formatModelName(model) {
-  console.log(model.charAt(0).toUpperCase() + model.split(/(?=[A-Z])/).join(' ').slice(1).toLowerCase());
   return model.charAt(0).toUpperCase() + model.split(/(?=[A-Z])/).join(' ').slice(1).toLowerCase();
 }
 

@@ -5,7 +5,8 @@
 .topnav {
   height: 35px;
   width: 100%;
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid $gray-2;
+  background-color: $gray-1
 }
 
 .topnav-link {
@@ -17,9 +18,10 @@
   text-align: center;
   font-size: 14px;
   width: 75px;
+  color: $gray-8;
 
   &:hover {
-    background-color: grey;
+    color: blue;
   }
 }
 

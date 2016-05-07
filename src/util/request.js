@@ -1,32 +1,6 @@
 import {ajax} from 'jquery';
 
-const endpointMapper = {
-  SIGNUP: {
-    url: 'auth',
-    method: 'POST'
-  },
-  LOGIN: {
-    url: 'auth',
-    method: 'GET'
-  },
-  LOGOUT: {
-    url: 'session',
-    method: 'DELETE'
-  },
-  IFRAME: {
-    url: 'iframe',
-    method: 'GET'
-  }
-};
-
-export default (serviceFunc, data) => {
-  const endpoint = endpointMapper[serviceFunc];
-
-  if (!endpoint) {
-    console.error(`Invalid service request: ${serviceFunc}`);
-    return null;
-  }
-
+export default (endpoint, data) => {
   const requestObj = {
     url: `/api/${endpoint.url}`,
     type: endpoint.method

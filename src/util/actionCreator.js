@@ -14,7 +14,7 @@ import navigate from './navigate';
 export default (name, data, options = {}) => {
   return dispatch => {
     dispatch({type: `${name}__START`});
-    return request.call(this, name, data)
+    return request.call(this, options.request, data)
      .then(result => {
        if (result.error) {
          dispatch({type: `${name}__ERROR`, error: result.error});

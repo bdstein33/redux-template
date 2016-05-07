@@ -17,7 +17,6 @@ export default function createFaq(context, input) {
         return [];
       }
 
-
       // If FAQ has any sections, create them
       return Promise.all(input.sections.map(section => {
         return faqService.createSection(context, _.merge(section, {faqId: createdFaq.id}));

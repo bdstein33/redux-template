@@ -3,10 +3,13 @@ import endpointLoader from '../../util/endpointLoader';
 
 const router = express.Router();
 
-router.post('/', endpointLoader('faq/createFaq'));
+router.post('/', endpointLoader('faqs/createFaq'));
 // router.update('/', endpointLoader('faq/updateFaq'));
-router.delete('/', endpointLoader('faq/deleteFaq'));
-router.get('/', endpointLoader('faq/getFaq'));
+router.delete('/', endpointLoader('faqs/deleteFaq'));
+// router.get('/', endpointLoader('faq/getFaq'));
+
+
+router.get('/user/', endpointLoader('faqs/getUserFaqs'));
 
 // router.post('/section', endpointLoader('faq/createFaqSection'));
 // router.update('/section', endpointLoader('faq/updateFaqSection'));
