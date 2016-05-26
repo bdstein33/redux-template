@@ -1,0 +1,31 @@
+.topnav {
+  height: 35px;
+  width: 100%;
+  /*border-bottom: 1px solid $gray-2;*/
+  background-color: $gray-8;
+}
+
+.topnav-link {
+  cursor: pointer;
+  font-weight: 300;
+  height: 100%;
+  line-height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  font-size: 14px;
+  width: 75px;
+  color: $gray-1;
+}
+
+.logo {
+  background-color: $green-3;
+  color: $gray-1;
+  &:hover {
+    background-color: $green-1;
+  }
+}
+
+.topnav-link-right {
+  width: auto;
+}

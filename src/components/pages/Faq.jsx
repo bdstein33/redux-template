@@ -4,11 +4,10 @@ import {autobind} from 'core-decorators';
 import storeConnect from '../addons/storeConnect';
 
 import {faqActions} from '../../actions';
-import FaqOverview from './Faqs/FaqOverview';
 import Hero from '../shared/Hero';
 
 
-class Faqs extends React.Component {
+class Faq extends React.Component {
   static propTypes = {
     application: React.PropTypes.object,
     // From storeConnect
@@ -17,18 +16,13 @@ class Faqs extends React.Component {
   }
 
   render() {
-    const {userFaqs} = this.props.faq;
     return (
       <div>
-        <Hero title='FAQs'/>
-        {
-          userFaqs.map((faq, i) => {
-            return <FaqOverview faq={faq} key={`${i}`}/>;
-          })
-        }
+        <Hero title='FAQ Profle'/>
+        FAQ PAGE
       </div>
     );
   }
 }
 
-export default storeConnect(['faq'], faqActions)(Faqs);
+export default storeConnect(['faq'], faqActions)(Faq);

@@ -1,5 +1,6 @@
 const initialState = {
-  userFaqs: []
+  userFaqs: [],
+  faq: {}
 };
 
 export default (state = initialState, action) => {
@@ -7,6 +8,10 @@ export default (state = initialState, action) => {
     case 'GET_USER_FAQS':
       return Object.assign({}, state, {
         userFaqs: action.data,
+      });
+    case 'GET_FAQ':
+      return Object.assign({}, state, {
+        faq: action.data,
       });
     default:
       return state;

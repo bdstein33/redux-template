@@ -5,7 +5,7 @@ export default {
     return actionCreator('SIGNUP', data, {
       request: {
         url: 'auth',
-        method: 'POST'
+        method: 'post'
       },
       success: ['HIDE_MODAL'],
       navigate: '/'
@@ -16,7 +16,7 @@ export default {
     return actionCreator('LOGIN', data, {
       request: {
         url: 'auth',
-        method: 'GET'
+        method: 'get'
       },
       success: ['HIDE_MODAL'],
       navigate: '/'
@@ -27,7 +27,7 @@ export default {
     return actionCreator('LOGOUT', null, {
       request: {
         url: 'session',
-        method: 'DELETE'
+        method: 'delete'
       },
       navigate: '/'
     });

@@ -6,10 +6,10 @@ const router = express.Router();
 router.post('/', endpointLoader('faqs/createFaq'));
 // router.update('/', endpointLoader('faq/updateFaq'));
 router.delete('/', endpointLoader('faqs/deleteFaq'));
-// router.get('/', endpointLoader('faq/getFaq'));
+router.get('/', endpointLoader('faq/getFaq'));
 
 
-router.get('/user/', endpointLoader('faqs/getUserFaqs'));
+router.get('/user', endpointLoader('faqs/getUserFaqs'));
 
 // router.post('/section', endpointLoader('faq/createFaqSection'));
 // router.update('/section', endpointLoader('faq/updateFaqSection'));

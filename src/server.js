@@ -24,7 +24,7 @@ import getRoutes from './routes';
 const debug = Debug('Server'),
   server = express(),
   port = process.env.PORT || 3000,
-  RedisStore = redis(session);;
+  RedisStore = redis(session);
 
 /******************************
 WEBPACK AND HMR
@@ -50,6 +50,13 @@ server.use('/public', express.static(path.join(__dirname, '../build')));
 // Request parsing
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));
+
+// Allow Cors
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 // Session
 server.use(session({
@@ -86,6 +93,9 @@ server.use((req, res) => {
     }
   };
 
+  console.log('XXXXXXXXX');
+  console.log('STARTING APP UP');
+  console.log('XXXXXXXXX');
   const memoryHistory = createMemoryHistory(req.url);
   const store = configureStore(memoryHistory, initialState);
   const history = syncHistoryWithStore(memoryHistory, store);

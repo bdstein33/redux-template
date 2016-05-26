@@ -10,6 +10,7 @@ class Html extends React.Component {
 
   render() {
     const {store, markup} = this.props;
+
     return (
       <html>
         <head>

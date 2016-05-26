@@ -3,7 +3,9 @@ import {Route, IndexRoute} from 'react-router';
 
 import App from './components/App';
 import Index from './components/pages/Index';
+import Faq from './components/pages/Faq';
 import Faqs from './components/pages/Faqs';
+import Test from './components/pages/Test';
 
 import faqActions from './actions/faq';
 
@@ -14,22 +16,35 @@ export default (store) => {
       if (!store.getState().application.user) {
         replaceState(null, '/');
       }
-      callback();
+      return callback();
     }
-    checkAuth();
+    console.log('CHECKING AUTH');
+    return checkAuth();
   }
 
-  function test() {
-    faqActions.getUserFaqs({id: store.getState().application.user.id})(store.dispatch);
+  function getFaqs(nextState, replaceState, callback) {
+    console.log('GET FAQS');
+    return faqActions.getUserFaqs({id: store.getState().application.user.id})(store.dispatch)
+      .then(() => {
+        callback();
+      });
   }
 
+  function getFaq(nextState, replaceState, callback) {
+    return faqActions.getFaq({id: nextState.params.id, userId: store.getState().application.user.id})(store.dispatch)
+      .then(() => {
+        callback();
+      });
+  }
 
   return (
     <Route path='/' component={App}>
       <IndexRoute component={Index}/>
       <Route onEnter={requireLogin}>
-        <Route path='faqs' component={Faqs} onEnter={test} />
+        <Route path='/faqs' component={Faqs} onEnter={getFaqs} />
+        <Route path='/faqs/:id' component={Faq} onEnter={getFaq} />
       </Route>
+      <Route path='/test' component={Test}/>
     </Route>
   );
 };

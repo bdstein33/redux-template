@@ -1,0 +1,15 @@
+$height: 50px;
+
+.hero {
+  background-color: $green-3;
+  height: $height;
+  width: 100%;
+
+  .title {
+    @extend .text-center;
+    margin: 0;
+    color: $gray-1;
+    font-weight: 300;
+    line-height: $height;
+  }
+}

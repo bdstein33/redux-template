@@ -4,6 +4,7 @@ import {isValid, DBQuery} from '../../util';
 import faqService from './faqService';
 
 export default function createFaq(context, input) {
+  console.log('GETTING USER FAQS');
   return isValid(input, idSchema)
     .then(() => {
       return DBQuery.getAll(
@@ -12,6 +13,6 @@ export default function createFaq(context, input) {
         {
           where: {userId: input.id}
         }
-      )
+      );
     });
 }
