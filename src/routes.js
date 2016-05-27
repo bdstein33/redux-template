@@ -18,12 +18,10 @@ export default (store) => {
       }
       return callback();
     }
-    console.log('CHECKING AUTH');
     return checkAuth();
   }
 
   function getFaqs(nextState, replaceState, callback) {
-    console.log('GET FAQS');
     return faqActions.getUserFaqs({id: store.getState().application.user.id})(store.dispatch)
       .then(() => {
         callback();

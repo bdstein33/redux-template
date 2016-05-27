@@ -73,14 +73,13 @@ server.use(session({
   saveUninitialized: true
 }));
 
-
 /******************************
 API ROUTES
 ******************************/
-server.use('/api/auth', require('../api/endpoints/auth'));
-server.use('/api/session', require('../api/endpoints/session'));
-server.use('/api/faqs', require('../api/endpoints/faqs'));
-server.use('/api/iframe', require('../api/endpoints/iframe'));
+// server.use('/api/auth', require('../api/endpoints/auth'));
+// server.use('/api/session', require('../api/endpoints/session'));
+// server.use('/api/faqs', require('../api/endpoints/faqs'));
+// server.use('/api/iframe', require('../api/endpoints/iframe'));
 
 /******************************
 ISOMORPHIC RENDERING
@@ -93,9 +92,6 @@ server.use((req, res) => {
     }
   };
 
-  console.log('XXXXXXXXX');
-  console.log('STARTING APP UP');
-  console.log('XXXXXXXXX');
   const memoryHistory = createMemoryHistory(req.url);
   const store = configureStore(memoryHistory, initialState);
   const history = syncHistoryWithStore(memoryHistory, store);

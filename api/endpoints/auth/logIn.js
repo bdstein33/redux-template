@@ -30,8 +30,6 @@ export default (context, input) => {
 
           // Add user to session
           _.merge(context.session, {user});
-          console.log('AAA');
-          console.log(context.session);
 
           return user;
         });
