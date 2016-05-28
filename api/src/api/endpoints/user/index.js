@@ -3,6 +3,6 @@ import endpointLoader from '../../util/endpointLoader';
 
 const router = express.Router();
 
-router.delete('/', endpointLoader('session/delete'));
+router.get('/', endpointLoader('user/get'));
 
 export default router;

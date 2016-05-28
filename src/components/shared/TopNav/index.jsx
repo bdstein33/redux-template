@@ -24,12 +24,12 @@ class TopNav extends React.Component {
   }
 
   render() {
-    const {user} = this.props.application;
+    const {loggedIn, user} = this.props.application;
     return (
       <div className='topnav'>
       <div className='width-container'>
         {
-          !user ?
+          !loggedIn ?
             <div>
               <TopNavLink href='/' label='LOGO' className='logo'/>
               <TopNavLink label='Log In' float='right' onClick={this.showLogin}/>

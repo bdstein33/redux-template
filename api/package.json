@@ -2,7 +2,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register ./api/test/**/*.js",
     "start": "node src/start.js",
-    "api": "node api/src/start.js",
+    "api": "node api_server/src/start.js",
     "lint": "eslint --quiet --ext .js,.jsx ./src"
   },
   "author": "",

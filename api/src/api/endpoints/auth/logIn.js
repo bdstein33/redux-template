@@ -30,7 +30,6 @@ export default (context, input) => {
 
           // Add user to session
           _.merge(context.session, {user});
-
           return user;
         });
     });

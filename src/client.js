@@ -7,11 +7,25 @@ import configureStore from './store';
 import getRoutes from './routes';
 
 const initialState = window.__data;
+
+
+if (typeof window !== 'undefined') {
+  if (window.localStorage.user) {
+    initialState.application = {
+      user: {id: localStorage.userId}
+    };
+  }
+}
+
 const store = configureStore(browserHistory, initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
 // localStorage.debug = '*';
 match({history, routes: getRoutes(store)}, (error, redirectLocation, renderProps) => {
+  console.log('GETTING APP READY');
+  if (typeof window !== 'undefined') {
+    console.log(window.localStorage);
+  }
   render(
     <Provider store={store}>
       <Router {...renderProps}/>

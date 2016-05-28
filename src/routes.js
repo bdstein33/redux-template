@@ -8,18 +8,32 @@ import Faqs from './components/pages/Faqs';
 import Test from './components/pages/Test';
 
 import faqActions from './actions/faq';
+import userActions from './actions/user';
 
 export default (store) => {
   function requireLogin(nextState, replaceState, callback) {
     function checkAuth() {
       // If user does not exist in store, return to index page
-      if (!store.getState().application.user) {
+      if (!store.getState().application.user.id) {
         replaceState(null, '/');
       }
       return callback();
     }
     return checkAuth();
   }
+
+  function getUserData(nextState, replaceState, callback) {
+    console.log('GET USER DATA');
+    console.log(store.getState().application);
+    if (store.getState().application.user.id) {
+      return userActions.getUser({id: store.getState().application.user.id})(store.dispatch)
+        .then(() => {
+          callback();
+        });
+    }
+    callback();
+  }
+
 
   function getFaqs(nextState, replaceState, callback) {
     return faqActions.getUserFaqs({id: store.getState().application.user.id})(store.dispatch)
@@ -36,7 +50,7 @@ export default (store) => {
   }
 
   return (
-    <Route path='/' component={App}>
+    <Route path='/' component={App} onEnter={getUserData}>
       <IndexRoute component={Index}/>
       <Route onEnter={requireLogin}>
         <Route path='/faqs' component={Faqs} onEnter={getFaqs} />

@@ -23,8 +23,7 @@ import getRoutes from './routes';
 
 const debug = Debug('Server'),
   server = express(),
-  port = process.env.PORT || 3000,
-  RedisStore = redis(session);
+  port = process.env.PORT || 3000;
 
 /******************************
 WEBPACK AND HMR
@@ -58,28 +57,6 @@ server.use((req, res, next) => {
   next();
 });
 
-// Session
-server.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false, // don't resave session to store if it wasn't modified
-  store: new RedisStore({
-    host: process.env.REDIS_SERVER,
-    port: process.env.REDIS_PORT
-  }),
-  rolling: true, // reset expiration to original maxAge on each request
-  cookie: {
-    maxAge: parseInt(process.env.SESSION_AGE, 10)
-  },
-  saveUninitialized: true
-}));
-
-/******************************
-API ROUTES
-******************************/
-// server.use('/api/auth', require('../api/endpoints/auth'));
-// server.use('/api/session', require('../api/endpoints/session'));
-// server.use('/api/faqs', require('../api/endpoints/faqs'));
-// server.use('/api/iframe', require('../api/endpoints/iframe'));
 
 /******************************
 ISOMORPHIC RENDERING
@@ -87,9 +64,9 @@ ISOMORPHIC RENDERING
 server.use((req, res) => {
   // If user exists on session (is logged in), pass user data to client
   const initialState = {
-    application: {
-      user: req.session.user
-    }
+    // application: {
+    //   user: req.session.user
+    // }
   };
 
   const memoryHistory = createMemoryHistory(req.url);

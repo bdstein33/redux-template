@@ -6,8 +6,6 @@ import sanitizeInput from './sanitizeInput';
 /* Wraps input submitted to API into payload object and returns output from promisified controller function */
 export default controllerName => {
   return (req, res) => {
-    console.log('JJJJJJ');
-    console.log('ENDPOINT HIT');
     const context = {db, session: req.session},
       endpoint = require(`../endpoints/${controllerName}`),
       input = Object.keys(req.query).length ? req.query : req.body,
@@ -20,9 +18,10 @@ export default controllerName => {
         return endpoint.call(null, context, sanatizedInput);
       }));
     }).then(output => {
-      return res.json(output);
+      req.session.save();
+      res.json(output);
     }).catch(error => {
-      return res.json({error: error.message});
+      res.json({error: error.message});
     });
   };
 };
