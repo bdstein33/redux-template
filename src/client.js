@@ -1,35 +1,25 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import {Router, match, browserHistory} from 'react-router';
+import {Router, browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './store';
 import getRoutes from './routes';
 
-const initialState = window.__data;
+// const initialState = window.__data;
+const initialState = {};
 
-
-if (typeof window !== 'undefined') {
-  if (window.localStorage.user) {
-    initialState.application = {
-      user: {id: localStorage.userId}
-    };
-  }
-}
+initialState.application = {
+  user: {id: localStorage.userId},
+  loggedIn: !!localStorage.userId
+};
 
 const store = configureStore(browserHistory, initialState);
 const history = syncHistoryWithStore(browserHistory, store);
 
-// localStorage.debug = '*';
-match({history, routes: getRoutes(store)}, (error, redirectLocation, renderProps) => {
-  console.log('GETTING APP READY');
-  if (typeof window !== 'undefined') {
-    console.log(window.localStorage);
-  }
-  render(
-    <Provider store={store}>
-      <Router {...renderProps}/>
-    </Provider>,
-    document.getElementById('app')
-  );
-});
+render(
+  <Provider store={store}>
+    <Router history={history} routes={getRoutes(store)}/>
+  </Provider>,
+  document.getElementById('app')
+);

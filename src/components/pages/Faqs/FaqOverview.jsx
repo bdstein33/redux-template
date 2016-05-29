@@ -7,7 +7,7 @@ class FaqSection extends React.Component {
 
   render() {
     const {faq} = this.props;
-
+    console.log(faq);
     return (
       <div className='faq-overview'>
        <p className='name'>{faq.name}</p>

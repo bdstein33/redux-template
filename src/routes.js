@@ -23,11 +23,9 @@ export default (store) => {
   }
 
   function getUserData(nextState, replaceState, callback) {
-    console.log('GET USER DATA');
-    console.log(store.getState().application);
     if (store.getState().application.user.id) {
       return userActions.getUser({id: store.getState().application.user.id})(store.dispatch)
-        .then(() => {
+        .then((data) => {
           callback();
         });
     }

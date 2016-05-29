@@ -11,11 +11,9 @@ class Index extends React.Component {
   }
 
   render() {
-    const loggedIn = !!this.props.application.user;
-
     return (
       <div>
-        {loggedIn ? <Home /> : <Landing />}
+        {this.props.application.loggedIn ? <Home /> : <Landing />}
       </div>
     );
   }

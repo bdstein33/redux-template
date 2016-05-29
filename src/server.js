@@ -5,21 +5,9 @@ import webpackConfig from '../webpack.dev.config.js';
 
 // Server Configuration
 import express from 'express';
-import session from 'express-session';
 import bodyParser from 'body-parser';
-import redis from 'connect-redis';
 // import morgan from 'morgan';
 
-// React/Redux Requirements
-import {renderToString, renderToStaticMarkup} from 'react-dom/server';
-import React from 'react';
-import {Provider} from 'react-redux';
-import Html from './components/Html';
-// Routing
-import {createMemoryHistory, match, RouterContext} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
-import configureStore from './store';
-import getRoutes from './routes';
 
 const debug = Debug('Server'),
   server = express(),
@@ -61,40 +49,8 @@ server.use((req, res, next) => {
 /******************************
 ISOMORPHIC RENDERING
 ******************************/
-server.use((req, res) => {
-  // If user exists on session (is logged in), pass user data to client
-  const initialState = {
-    // application: {
-    //   user: req.session.user
-    // }
-  };
-
-  const memoryHistory = createMemoryHistory(req.url);
-  const store = configureStore(memoryHistory, initialState);
-  const history = syncHistoryWithStore(memoryHistory, store);
-
-  match({history, routes: getRoutes(store), location: req.url}, (error, redirectLocation, renderProps) => {
-    if (error) {
-      res.status(500).send(error.message);
-    } else if (redirectLocation) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    } else if (renderProps) {
-      // Render markup to string
-      const markup = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps}/>
-        </Provider>
-      );
-
-      // Convert markup string into html
-      const html = renderToStaticMarkup(React.createElement(Html, {
-        store,
-        markup
-      }));
-
-      res.send(html);
-    }
-  });
+server.get('*', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
 });
 
 server.listen(port, () => {
