@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '../../shared/Link';
 
 class FaqSection extends React.Component {
   static propTypes = {
@@ -7,11 +8,12 @@ class FaqSection extends React.Component {
 
   render() {
     const {faq} = this.props;
-    console.log(faq);
     return (
-      <div className='faq-overview'>
-       <p className='name'>{faq.name}</p>
-      </div>
+      <Link href={`/faqs/${this.props.faq.id}`}>
+        <div className='faq-overview'>
+         <p className='name'>{faq.name}</p>
+        </div>
+      </Link>
     );
   }
 }

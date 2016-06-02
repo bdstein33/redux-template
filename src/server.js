@@ -49,8 +49,8 @@ server.use((req, res, next) => {
 /******************************
 ISOMORPHIC RENDERING
 ******************************/
-server.get('*', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+server.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`);
 });
 
 server.listen(port, () => {
