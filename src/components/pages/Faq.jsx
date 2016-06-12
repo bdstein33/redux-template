@@ -18,11 +18,11 @@ class Faq extends React.Component {
   render() {
     return (
       <div>
-        <Hero title='FAQ Profile'/>
+        <Hero title={this.props.faq.name}/>
         FAQ PAGE
       </div>
     );
   }
 }
 
-export default storeConnect(['faq'], faqActions)(Faq);
+export default storeConnect([{faq: 'faq.faq'}], faqActions)(Faq);

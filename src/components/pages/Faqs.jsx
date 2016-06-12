@@ -13,16 +13,15 @@ class Faqs extends React.Component {
     application: React.PropTypes.object,
     // From storeConnect
     actions: React.PropTypes.object,
-    faq: React.PropTypes.object
+    userFaqs: React.PropTypes.array
   }
 
   render() {
-    const {userFaqs} = this.props.faq;
     return (
       <div>
         <Hero title='FAQs'/>
         {
-          userFaqs.map((faq, i) => {
+          this.props.userFaqs.map((faq, i) => {
             return <FaqOverview faq={faq} key={`${i}`}/>;
           })
         }
@@ -31,4 +30,4 @@ class Faqs extends React.Component {
   }
 }
 
-export default storeConnect(['faq'], faqActions)(Faqs);
+export default storeConnect([{userFaqs: 'faq.userFaqs'}], faqActions)(Faqs);
