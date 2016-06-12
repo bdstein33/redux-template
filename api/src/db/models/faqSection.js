@@ -18,7 +18,14 @@ export default (sequelize, DataTypes) => {
 
   const methods = {
     tableName: 'faq_sections',
-    timestamps: false
+    timestamps: false,
+    classMethods: {
+      associate: (models) => {
+        models.faqSection.hasMany(models.faqQuestion, {
+          foreignKey: 'section_id'
+        });
+      }
+    }
   };
 
   return sequelize.define('faqSection', schema, methods);

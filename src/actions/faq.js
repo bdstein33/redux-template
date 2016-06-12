@@ -13,7 +13,7 @@ export default {
   getFaq: (data) => {
     return actionCreator('GET_FAQ', data, {
       request: {
-        url: 'faqs/user',
+        url: 'faqs',
         method: 'get'
       }
     });

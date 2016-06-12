@@ -18,7 +18,7 @@ class Faq extends React.Component {
   render() {
     return (
       <div>
-        <Hero title='FAQ Profle'/>
+        <Hero title='FAQ Profile'/>
         FAQ PAGE
       </div>
     );

@@ -3,14 +3,16 @@ import {idSchema} from '../../joiSchema';
 import {isValid, DBQuery} from '../../util';
 import faqService from './faqService';
 
-export default function createFaq(context, input) {
+export default function getUserFaqs(context, input) {
   return isValid(input, idSchema)
     .then(() => {
       return DBQuery.getAll(
         context,
         'faq',
         {
-          where: {userId: input.id}
+          where: {
+            userId: input.id
+          }
         }
       );
     });

@@ -2,8 +2,8 @@ import _ from 'lodash';
 import {faqSchema} from '../../joiSchema';
 import {isValid, DBQuery} from '../../util';
 
-export default function createFaq(context, input) {
-  return isValid(input, faqSchema, ['id', 'userId'])
+export default function getFaq(context, input) {
+  return isValid(input, faqSchema, ['id'])
     .then(() => {
       return DBQuery.getOne(
         context,
@@ -11,6 +11,24 @@ export default function createFaq(context, input) {
         {
           where: input
         }
-      );
+      )
+        .then(faq => {
+          return DBQuery.getAll(
+            context,
+            'faqSection',
+            {
+              where: {
+                faqId: faq.id
+              },
+              include: [{ model: context.db.faqQuestion}]
+            }
+          )
+            .then(sections => {
+              return {
+                ...faq,
+                sections
+              };
+            });
+        });
     });
 }

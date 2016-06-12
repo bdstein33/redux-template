@@ -36,6 +36,8 @@ const associateModel = (model, modelName) => {
 
 const combineModels = promisify(fs.readdir);
 
+debug('Begin importing');
+
 combineModels(path.join(__dirname, 'models'))
   .then(files => {
     _.forEach(files, importModel);

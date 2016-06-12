@@ -22,7 +22,14 @@ export default (sequelize, DataTypes) => {
 
   const methods = {
     tableName: 'faq_questions',
-    timestamps: false
+    timestamps: false,
+    classMethods: {
+      associate: (models) => {
+        models.faqQuestion.belongsTo(models.faqSection, {
+          foreignKey: 'section_id'
+        });
+      }
+    }
   };
 
   return sequelize.define('faqQuestion', schema, methods);
