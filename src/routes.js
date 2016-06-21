@@ -6,6 +6,7 @@ import Index from './components/pages/Index';
 import Faq from './components/pages/Faq';
 import Faqs from './components/pages/Faqs';
 import Test from './components/pages/Test';
+import Reference from './components/pages/Reference';
 
 import faqActions from './actions/faq';
 import userActions from './actions/user';
@@ -55,6 +56,7 @@ export default (store) => {
         <Route path='/faqs/:id' component={Faq} onEnter={getFaq} />
       </Route>
       <Route path='/test' component={Test}/>
+      <Route path='/reference' component={Reference}/>
     </Route>
   );
 };

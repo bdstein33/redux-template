@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import {faqSchema} from '../../joiSchema';
 import {isValid, plain} from '../../util';
-import faqService from './faqService';
+import faqService from './_faqService';
 
 export default function createFaq(context, input) {
   let output;

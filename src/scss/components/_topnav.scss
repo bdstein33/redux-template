@@ -1,8 +1,7 @@
 .topnav {
   height: 35px;
   width: 100%;
-  /*border-bottom: 1px solid $gray-2;*/
-  background-color: $gray-8;
+  background-color: $blue-1;
 }
 
 .topnav-link {
@@ -15,14 +14,14 @@
   text-align: center;
   font-size: 14px;
   width: 75px;
-  color: $gray-1;
+  color: $gray-04;
 }
 
 .logo {
-  background-color: $green-3;
-  color: $gray-1;
+  background-color: $blue-1;
+  color: $gray-04;
   &:hover {
-    background-color: $green-1;
+    background-color: $blue-2;
   }
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {autobind} from 'core-decorators';
 
 import storeConnect from '../addons/storeConnect';

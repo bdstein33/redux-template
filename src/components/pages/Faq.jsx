@@ -6,6 +6,8 @@ import storeConnect from '../addons/storeConnect';
 import {faqActions} from '../../actions';
 import Hero from '../shared/Hero';
 
+import FaqSection from './Faq/FaqSection';
+
 
 class Faq extends React.Component {
   static propTypes = {
@@ -16,10 +18,16 @@ class Faq extends React.Component {
   }
 
   render() {
+    console.log(this.props.faq);
+    const {faq} = this.props;
     return (
       <div>
-        <Hero title={this.props.faq.name}/>
-        FAQ PAGE
+        <Hero title={faq.name}/>
+        <div className='edit-bar'>
+        </div>
+        {faq.sections.map((faqSection, i) => {
+          return <FaqSection section={faqSection} key={`FaqSection-${i}`}/>;
+        })}
       </div>
     );
   }
