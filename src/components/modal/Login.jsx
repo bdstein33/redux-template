@@ -8,6 +8,7 @@ import Form from '../shared/Form/Form';
 import TextInput from '../shared/Form/TextInput';
 import Submit from '../shared/Form/Submit';
 import SignUp from './SignUp';
+import * as C from '../shared';
 
 class LogIn extends React.Component {
   static propTypes = {
@@ -34,9 +35,10 @@ class LogIn extends React.Component {
         </Form>
 
         <div className='bottom'>
-          <p>
+          <C.Text>
             Don't have an account? <span onClick={this.showSignUp} className='text-link'>Sign up</span>
-          </p>
+          </C.Text>
+
         </div>
 
       </div>

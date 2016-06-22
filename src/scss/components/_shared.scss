@@ -1,0 +1,42 @@
+// Text
+
+.text {
+  color: $gray-1;
+  display: block;
+}
+
+// Buttons
+
+.button {
+  height: $component-height;
+  padding: $component-padding;
+  line-height: $component-height;
+  text-align: center;
+  border-radius: 4px;
+  min-width: 75px;
+  cursor: pointer;
+  font-size: $font-size-2;
+  display: inline-block;
+}
+
+.button__solid {
+   background-color: $blue-3;
+   border: 1px solid $blue-3;
+   color: $white;
+   &:hover {
+    background-color: $blue-4;
+    border: 1px solid $blue-4;
+  }
+}
+
+.button__transparent {
+  border: 1px solid $blue-2;
+  color: $blue-2;
+   &:hover {
+    border: 1px solid $blue-3;
+    color: $blue-3;
+  }
+}
+
+
+
