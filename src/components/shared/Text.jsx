@@ -9,7 +9,7 @@ class Text extends React.Component {
   };
 
   static defaultProps = {
-    fontSize: '2'
+    fontSize: 2
   }
 
   render() {

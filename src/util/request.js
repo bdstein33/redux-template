@@ -14,7 +14,7 @@ export default (endpoint, data = {}) => {
   return axios(requestObj)
     .then(result => {
       return result.data;
-    }).catch(err => {
+    }).catch(() => {
       return {};
     });
 };

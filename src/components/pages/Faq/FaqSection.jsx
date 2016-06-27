@@ -11,7 +11,6 @@ class FaqQuestion extends React.Component {
         <div className='faq-question'>
           <p className='question-name'>{question.name}</p>
           <p className='question-content'>{question.content}</p>
-          
         </div>
     );
   }
@@ -30,10 +29,12 @@ class FaqSection extends React.Component {
             {section.name}
           </div>
           {section.faqQuestions.map((question, i) => {
-            return <FaqQuestion
-                     question={question}
-                     key={`faqQuestion-${i}`}
-                   />
+            return (
+              <FaqQuestion
+                question={question}
+                key={`faqQuestion-${i}`}
+              />
+            );
           })}
         </div>
     );

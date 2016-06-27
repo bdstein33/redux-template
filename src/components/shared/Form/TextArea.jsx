@@ -2,14 +2,19 @@ import React from 'react';
 import classNames from 'classnames';
 import Text from '../Text';
 
-class TextInput extends React.Component {
+class TextArea extends React.Component {
   static propTypes = {
     name: React.PropTypes.string.isRequired,
     defaultValue: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     label: React.PropTypes.string,
-    className: React.PropTypes.string
+    className: React.PropTypes.string,
+    type: React.PropTypes.string
   };
+
+  static defaultProps = {
+    type: 'text'
+  }
 
   render() {
     const {
@@ -18,19 +23,19 @@ class TextInput extends React.Component {
       placeholder,
       label,
       className,
+      type,
       ...otherProps
     } = this.props;
 
     return (
       <div>
         {label && <Text className='form-input-label'>{label}</Text>}
-        <input
-          type='text'
+        <textarea
           name={name}
           placeholder={placeholder}
           value={defaultValue}
           autoComplete='off'
-          className={classNames('text-input', className)}
+          className={classNames('text-area', className)}
           {...otherProps}
         />
       </div>
@@ -38,4 +43,4 @@ class TextInput extends React.Component {
   }
 }
 
-export default TextInput;
+export default TextArea;

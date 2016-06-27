@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import Text from './Text';
+import Container from './layout/Container';
 
 class Link extends React.Component {
   static propTypes = {
@@ -16,14 +18,21 @@ class Link extends React.Component {
       ...otherProps
     } = this.props;
 
-   return (
-     <div className={classNames('hero', className)}>
-       <h1 className='title'>{title}</h1> 
-       {children}
-     </div>
-   );
+    return (
+      <Container isFullWidth={true} centeredContent={true} className='hero'>
+        <Text className='title' fontSize={4}>{title}</Text>
+        {children}
+      </Container>
 
+    );
   }
 }
 
 export default Link;
+
+
+/*
+<div className={classNames('hero', className)}>
+ 
+</div>
+*/

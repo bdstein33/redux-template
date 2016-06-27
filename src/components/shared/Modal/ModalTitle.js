@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import {autobind} from 'core-decorators';
-import * as actions from '../../../actions';
 
 class ModalTitle extends React.Component {
   static propTypes = {

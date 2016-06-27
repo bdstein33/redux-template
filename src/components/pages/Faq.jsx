@@ -1,5 +1,5 @@
 import React from 'react';
-import {autobind} from 'core-decorators';
+// import {autobind} from 'core-decorators';
 
 import storeConnect from '../addons/storeConnect';
 
@@ -7,6 +7,7 @@ import {faqActions} from '../../actions';
 import Hero from '../shared/Hero';
 
 import FaqSection from './Faq/FaqSection';
+import * as C from '../shared';
 
 
 class Faq extends React.Component {
@@ -18,12 +19,13 @@ class Faq extends React.Component {
   }
 
   render() {
-    console.log(this.props.faq);
     const {faq} = this.props;
     return (
       <div>
         <Hero title={faq.name}/>
         <div className='edit-bar'>
+          <C.Button type='transparent'>Add Section</C.Button>
+          <C.Button type='transparent'>Add Question</C.Button>
         </div>
         {faq.sections.map((faqSection, i) => {
           return <FaqSection section={faqSection} key={`FaqSection-${i}`}/>;

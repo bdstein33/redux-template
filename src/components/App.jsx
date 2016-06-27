@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div className='app-container'>
         <TopNav />
-        <div style={{margin: '0'}}>
+        <div className='app-body'>
           {this.props.children}
         </div>
         <Modal/>

@@ -17,26 +17,28 @@
   cursor: pointer;
   font-size: $font-size-2;
   display: inline-block;
-}
 
-.button__solid {
-   background-color: $blue-3;
-   border: 1px solid $blue-3;
-   color: $white;
-   &:hover {
-    background-color: $blue-4;
-    border: 1px solid $blue-4;
+  &__solid {
+     background-color: $blue-3;
+     border: 1px solid $blue-3;
+     color: $white;
+     &:hover {
+      background-color: $blue-4;
+      border: 1px solid $blue-4;
+    }
+  }
+
+  &__transparent {
+    border: 1px solid $blue-2;
+    color: $blue-2;
+     &:hover {
+      border: 1px solid $blue-3;
+      color: $blue-3;
+    }
   }
 }
 
-.button__transparent {
-  border: 1px solid $blue-2;
-  color: $blue-2;
-   &:hover {
-    border: 1px solid $blue-3;
-    color: $blue-3;
-  }
-}
+
 
 
 

@@ -93,18 +93,11 @@ class Reference extends React.Component {
   }
 
   render() {
-    const {user} = this.props.application;
+    // const {user} = this.props.application;
 
     return (
-      <div>
-        <Section title='Colors' style={{marginTop: 0}}>
-          <ColorBlockContainer>
-          <ColorBlock name='green-1' color='#77b395' />
-          <ColorBlock name='green-2' color='#4b956f' />
-          <ColorBlock name='green-3' color='#28774f' />
-          <ColorBlock name='green-4' color='#0f5933' />
-          </ColorBlockContainer>
-
+      <C.Container isFullWidth={true}>
+        <Section title='Colors'>
           <ColorBlockContainer>
             <ColorBlock name='$blue-1' color='#063c4a'/>
             <ColorBlock name='$blue-2' color='#006680'/>
@@ -119,10 +112,11 @@ class Reference extends React.Component {
           </ColorBlockContainer>
 
           <ColorBlockContainer>
-            <ColorBlock name='$gray-01' color='#333'/>
-            <ColorBlock name='$gray-02' color='#666'/>
-            <ColorBlock name='$gray-03' color='#d2d2d2'/>
-            <ColorBlock name='$gray-04' color='#fafafa'/>
+            <ColorBlock name='$gray-1' color='#333'/>
+            <ColorBlock name='$gray-2' color='#666'/>
+            <ColorBlock name='$gray-3' color='#828282'/>
+            <ColorBlock name='$gray-4' color='#d2d2d2'/>
+            <ColorBlock name='$gray-5' color='#fafafa'/>
           </ColorBlockContainer>
         </Section>
 
@@ -131,6 +125,71 @@ class Reference extends React.Component {
           <C.Text fontSize={2}>Font Size 2</C.Text>
           <C.Text fontSize={3}>Font Size 3</C.Text>
           <C.Text fontSize={4}>Font Size 4</C.Text>
+        </Section>
+
+        <Section title='Grid'>
+          <C.Container centerContent={true}>
+            Full Width Container
+          </C.Container>
+          <C.Container style={{backgroundColor: 'rgb(239, 233, 233)'}}>
+            <C.Row style={{backgroundColor: 'yellow', height: '40px'}}>
+              <C.Column columns={1} style={{backgroundColor: 'orange'}}>1</C.Column>
+              <C.Column columns={2} style={{backgroundColor: 'blue'}}>2</C.Column>
+              <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+              <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+              <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+              <C.Column columns={1} style={{backgroundColor: 'orange'}}>1</C.Column>
+            </C.Row>
+            Row Flex Align Left (Default)
+            <C.Row columns={12} style={{height: '40px'}}>
+              <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+              <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+              <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+            </C.Row>
+            Row Flex Align Center
+            <C.Row columns={12} style={{height: '40px'}} align='center'>
+              <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+              <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+              <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+            </C.Row>
+            Row Flex Align Right
+            <C.Row columns={12} style={{height: '40px'}} align='right'>
+              <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+              <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+              <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+            </C.Row>
+          </C.Container>
+          <C.Container centerContent={true}>
+            Full Width Container
+          </C.Container>
+          <C.Container isFullWidth={true} style={{backgroundColor: 'rgb(239, 233, 233)'}}>
+           <C.Row style={{backgroundColor: 'yellow', height: '40px'}}>
+             <C.Column columns={1} style={{backgroundColor: 'orange'}}>1</C.Column>
+             <C.Column columns={2} style={{backgroundColor: 'blue'}}>2</C.Column>
+             <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+             <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+             <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+             <C.Column columns={1} style={{backgroundColor: 'orange'}}>1</C.Column>
+           </C.Row>
+           Row Flex Align Left (Default)
+           <C.Row columns={12} style={{height: '40px'}}>
+             <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+             <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+             <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+           </C.Row>
+           Row Flex Align Center
+           <C.Row columns={12} style={{height: '40px'}} align='center'>
+             <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+             <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+             <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+           </C.Row>
+           Row Flex Align Right
+           <C.Row columns={12} style={{height: '40px'}} align='right'>
+             <C.Column columns={3} style={{backgroundColor: 'red'}}>3</C.Column>
+             <C.Column columns={4} style={{backgroundColor: 'blue'}}>4</C.Column>
+             <C.Column columns={1} style={{backgroundColor: 'green'}}>1</C.Column>
+           </C.Row>
+          </C.Container>
         </Section>
 
         <Section title='Buttons'>
@@ -143,15 +202,22 @@ class Reference extends React.Component {
         </Section>
 
         <Section title='Form'>
-          <C.Form>
+          <C.Form style={{width: '400px'}}>
             <C.TextInput
               name='test'
               placeholder='Text Input'
+              label='Label'
+            />
+            <C.TextArea
+              name='test2'
+              placeholder='Text Area'
+              label='Text Area'
+              rows='5'
             />
             <C.Submit />
           </C.Form>
         </Section>
-      </div>
+      </C.Container>
     );
   }
 }

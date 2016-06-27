@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Text from '../Text';
 
-class TextInput extends React.Component {
+class SelectInput extends React.Component {
   static propTypes = {
     name: React.PropTypes.string.isRequired,
     defaultValue: React.PropTypes.string,
@@ -24,18 +24,16 @@ class TextInput extends React.Component {
     return (
       <div>
         {label && <Text className='form-input-label'>{label}</Text>}
-        <input
-          type='text'
+        <select
           name={name}
-          placeholder={placeholder}
-          value={defaultValue}
-          autoComplete='off'
-          className={classNames('text-input', className)}
+          defaultValue={defaultValue}
+          className={classNames('select-input', className)}
           {...otherProps}
-        />
+        >
+        </select>
       </div>
     );
   }
 }
 
-export default TextInput;
+export default SelectInput;

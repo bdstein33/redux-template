@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-class TextInput extends React.Component {
+class Submit extends React.Component {
   static propTypes = {
     className: React.PropTypes.string,
     value: React.PropTypes.string
@@ -14,19 +14,19 @@ class TextInput extends React.Component {
   render() {
     const {
       className,
-      value
+      value,
+      ...otherProps
     } = this.props;
 
     return (
-      <div>
-        <input
-          type='submit'
-          value={value}
-          className={classNames('submit-input clickable text-white', className)}
-        />
-      </div>
+      <input
+        type='submit'
+        value={value}
+        className={classNames('submit-input clickable text-white', className)}
+        {...otherProps}
+      />
     );
   }
 }
 
-export default TextInput;
+export default Submit;

@@ -1,11 +1,11 @@
 import React from 'react';
-import {autobind} from 'core-decorators';
+// import {autobind} from 'core-decorators';
 
 import storeConnect from '../addons/storeConnect';
 
 import {faqActions} from '../../actions';
 import FaqOverview from './Faqs/FaqOverview';
-import Hero from '../shared/Hero';
+import * as C from '../shared';
 
 
 class Faqs extends React.Component {
@@ -19,7 +19,10 @@ class Faqs extends React.Component {
   render() {
     return (
       <div>
-        <Hero title='FAQs'/>
+        <C.Hero title='FAQs'/>
+        <div>
+        <C.Right><C.Button>NEW</C.Button></C.Right>
+        </div>
         {
           this.props.userFaqs.map((faq, i) => {
             return <FaqOverview faq={faq} key={`${i}`}/>;

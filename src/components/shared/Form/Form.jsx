@@ -22,7 +22,10 @@ class Form extends React.Component {
       ...otherProps
     } = this.props;
     return (
-      <form onSubmit={this.submitForm}>
+      <form
+        onSubmit={this.submitForm}
+        {...otherProps}
+      >
         {children}
       </form>
     );
