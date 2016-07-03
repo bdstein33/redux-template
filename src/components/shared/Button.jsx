@@ -6,13 +6,13 @@ class Button extends React.Component {
     text: React.PropTypes.string,
     className: React.PropTypes.string,
     children: React.PropTypes.node,
-    type: React.PropTypes.oneOf(['solid', 'transparent']),
+    bStyle: React.PropTypes.oneOf(['solid', 'transparent']),
     onClick: React.PropTypes.func
   };
 
   static defaultProps = {
     color: 'blue',
-    type: 'solid'
+    bStyle: 'solid'
   }
 
   render() {
@@ -20,13 +20,13 @@ class Button extends React.Component {
       text,
       children,
       className,
-      type,
+      bStyle,
       ...otherProps
     } = this.props;
 
     return (
       <div
-        className={classNames('button', `button__${type}`, className)}
+        className={classNames('button', `button__${bStyle}`, className)}
         {...otherProps}
       >
         {children || text.toUpperCase()}

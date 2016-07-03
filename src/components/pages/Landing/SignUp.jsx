@@ -3,11 +3,8 @@ import {autobind} from 'core-decorators';
 import storeConnect from '../addons/storeConnect';
 import {modalActions, authActions} from '../../actions';
 
-import Form from '../shared/Form/Form';
-import TextInput from '../shared/Form/TextInput';
-import Submit from '../shared/Form/Submit';
 import LogIn from './LogIn';
-import * as C from '../shared';
+import * as C from '../../shared';
 
 class SignUp extends React.Component {
   static propTypes = {
@@ -26,14 +23,14 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className='content-container modal-signup'>
-        <Form onSubmit={this.submitSignup}>
-          <TextInput name='firstName' placeholder='First Name' autoFocus={true}/>
-          <TextInput name='lastName' placeholder='Last Name'/>
-          <TextInput name='email' placeholder='Email'/>
-          <TextInput name='password' type='password' placeholder='Password'/>
-          <Submit value='Sign Up'/>
-        </Form>
+      <div className='content-container bottom-section-padding'>
+        <C.Form onSubmit={this.submitSignup}>
+          <C.TextInput name='firstName' placeholder='First Name' autoFocus={true}/>
+          <C.TextInput name='lastName' placeholder='Last Name'/>
+          <C.TextInput name='email' placeholder='Email'/>
+          <C.TextInput name='password' type='password' placeholder='Password'/>
+          <C.Submit value='Sign Up'/>
+        </C.Form>
 
         <div className='bottom'>
           <C.Text>

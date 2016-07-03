@@ -1,5 +1,8 @@
 @import './normalize';
 
+$component-height: 36px;
+$spacing-main: 16px;
+
 @import './colors';
 @import './font';
 @import './layout';
@@ -14,7 +17,7 @@
 @import './components/hero';
 @import './components/datagrid';
 
-$component-height: 36px;
+
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -37,6 +40,7 @@ html,
   height: 100%;
   width: 100%;
 }
+
 .app-container {
   height: 100%;
   min-width: 800px;
@@ -79,11 +83,56 @@ html,
 
 .width-container {
   height: 100%;
-  min-width: 800px;
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  max-width: 1200px;
+  min-width: 800px;
 }
 
+.add-margin {
+  margin: $spacing-main;
 
+  &-side {
+    margin: 0 $spacing-main;
+  }
 
+  &-left {
+    margin-left: $spacing-main;
+  }
+
+  &-right {
+    margin-right: $spacing-main;
+  }
+
+  &-top {
+    margin-top: $spacing-main;
+  }
+
+  &-bottom {
+    margin-bottom: $spacing-main;
+  }
+}
+
+.add-padding {
+  padding: $spacing-main;
+
+  &-side {
+    padding: 0 $spacing-main;
+  }
+
+  &-left {
+    padding-left: $spacing-main;
+  }
+
+  &-right {
+    padding-right: $spacing-main;
+  }
+
+  &-top {
+    padding-top: $spacing-main;
+  }
+
+  &-bottom {
+    padding-bottom: $spacing-main;
+  }
+}

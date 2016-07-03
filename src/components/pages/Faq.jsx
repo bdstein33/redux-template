@@ -23,10 +23,10 @@ class Faq extends React.Component {
     return (
       <div>
         <Hero title={faq.name}/>
-        <div className='edit-bar'>
-          <C.Button type='transparent'>Add Section</C.Button>
-          <C.Button type='transparent'>Add Question</C.Button>
-        </div>
+        <C.Row align='right' className='add-margin'>
+          <C.Button bType='transparent' className='add-margin-left'>NEW SECTION</C.Button>
+          <C.Button bType='transparent' className='add-margin-left'>NEW QUESTION</C.Button>
+        </C.Row>
         {faq.sections.map((faqSection, i) => {
           return <FaqSection section={faqSection} key={`FaqSection-${i}`}/>;
         })}

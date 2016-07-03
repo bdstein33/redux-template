@@ -37,7 +37,9 @@ export default (store) => {
   function getFaqs(nextState, replaceState, callback) {
     return faqActions.getUserFaqs({id: store.getState().application.user.id})(store.dispatch)
       .then(() => {
-        callback();
+        if (callback) {
+          callback();
+        }
       });
   }
 

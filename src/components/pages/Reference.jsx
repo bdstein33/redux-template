@@ -115,8 +115,10 @@ class Reference extends React.Component {
             <ColorBlock name='$gray-1' color='#333'/>
             <ColorBlock name='$gray-2' color='#666'/>
             <ColorBlock name='$gray-3' color='#828282'/>
+            <ColorBlock name='???' color='#9b9997'/>
             <ColorBlock name='$gray-4' color='#d2d2d2'/>
-            <ColorBlock name='$gray-5' color='#fafafa'/>
+            <ColorBlock name='$gray-5' color='#efeeec'/>
+            <ColorBlock name='$gray-6' color='#fafafa'/>
           </ColorBlockContainer>
         </Section>
 
@@ -129,7 +131,7 @@ class Reference extends React.Component {
 
         <Section title='Grid'>
           <C.Container centerContent={true}>
-            Full Width Container
+            Standard Width Container
           </C.Container>
           <C.Container style={{backgroundColor: 'rgb(239, 233, 233)'}}>
             <C.Row style={{backgroundColor: 'yellow', height: '40px'}}>
@@ -194,7 +196,7 @@ class Reference extends React.Component {
 
         <Section title='Buttons'>
           <C.Button text='Button' />
-          <C.Button text='Button' type='transparent' style={{marginLeft: 16}}/>
+          <C.Button text='Button' bStyle='transparent' style={{marginLeft: 16}}/>
         </Section>
 
         <Section title='Hero'>

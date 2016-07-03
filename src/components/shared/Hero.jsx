@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import Text from './Text';
 import Container from './layout/Container';
 
@@ -29,10 +28,3 @@ class Link extends React.Component {
 }
 
 export default Link;
-
-
-/*
-<div className={classNames('hero', className)}>
- 
-</div>
-*/

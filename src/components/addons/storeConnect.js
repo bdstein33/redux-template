@@ -5,7 +5,10 @@ import {isArray, isObject, merge} from 'lodash';
   Takes in an array of prop keys and an object of actions that are connected to the provided component.
 
   Each index of the prop key array can be a string (which maps directly to state),
-  or an object
+  or an object where the key is the prop variable name and the value is a string representing
+  the path of the store value assigned to the prop variable
+
+  Eg: ['modal', {user: 'application.user'}]
 */
 export default (propKeys, ...actions) => {
   function mapStateToProps(state) {

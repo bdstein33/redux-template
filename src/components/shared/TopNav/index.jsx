@@ -6,6 +6,7 @@ import storeConnect from '../../addons/storeConnect';
 import TopNavLink from './TopNavLink';
 import LogIn from '../../modal/LogIn';
 import {modalActions, authActions} from '../../../actions';
+import Container from '../layout/Container';
 
 class TopNav extends React.Component {
   static propTypes = {
@@ -24,26 +25,26 @@ class TopNav extends React.Component {
   }
 
   render() {
-    const {loggedIn, user} = this.props.application;
+    const {loggedIn} = this.props.application;
     return (
       <div className='topnav'>
-      <div className='width-container'>
-        {
-          !loggedIn ?
-            <div>
-              <TopNavLink href='/' label='LOGO' className='logo'/>
-              <TopNavLink label='LOG IN' float='right' onClick={this.showLogin}/>
-            </div>
-          :
-            <div>
-              <TopNavLink href='/' label='LOGO' />
-              <TopNavLink href='/faqs' label='FAQs' />
-              <TopNavLink href='/reference' label='REFERENCE' />
-              <TopNavLink href='/test' label='TEST' />
-              <TopNavLink label='LOG OUT' float='right' onClick={this.logOut} className='topnav-link-right'/>
-            </div>
-        }
-      </div>
+        <Container isFullWidth={true}>
+          {
+            !loggedIn ?
+              <div>
+                <TopNavLink href='/' label='Logo' className='logo'/>
+                <TopNavLink label='LOG IN' float='right' onClick={this.showLogin}/>
+              </div>
+            :
+              <div>
+                <TopNavLink href='/' label='HOME' />
+                <TopNavLink href='/faqs' label='FAQS' />
+                <TopNavLink href='/reference' label='REFERENCE' />
+                <TopNavLink href='/test' label='TEST' />
+                <TopNavLink label='LOG OUT' float='right' onClick={this.logOut} className='topnav-link-right'/>
+              </div>
+          }
+        </Container>
       </div>
     );
   }

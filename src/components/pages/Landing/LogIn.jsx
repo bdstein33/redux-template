@@ -4,11 +4,8 @@ import {autobind} from 'core-decorators';
 import storeConnect from '../addons/storeConnect';
 import {modalActions, authActions} from '../../actions';
 
-import Form from '../shared/Form/Form';
-import TextInput from '../shared/Form/TextInput';
-import Submit from '../shared/Form/Submit';
 import SignUp from './SignUp';
-import * as C from '../shared';
+import * as C from '../../shared';
 
 class LogIn extends React.Component {
   static propTypes = {
@@ -27,20 +24,18 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <div className='content-container modal-login'>
-        <Form onSubmit={this.submitLogIn}>
-          <TextInput name='email' placeholder='Email' autoComplete='off' autoFocus={true}/>
-          <TextInput name='password' type='password' placeholder='Password'/>
-          <Submit value='Log In'/>
-        </Form>
+      <div className='content-container bottom-section-padding'>
+        <C.Form onSubmit={this.submitLogIn}>
+          <C.TextInput name='email' placeholder='Email' autoComplete='off' autoFocus={true}/>
+          <C.TextInput name='password' type='password' placeholder='Password'/>
+          <C.Submit value='Log In'/>
+        </C.Form>
 
         <div className='bottom'>
           <C.Text>
             Don't have an account? <span onClick={this.showSignUp} className='text-link'>Sign up</span>
           </C.Text>
-
         </div>
-
       </div>
     );
   }

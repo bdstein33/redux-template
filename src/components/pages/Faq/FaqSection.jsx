@@ -1,4 +1,5 @@
 import React from 'react';
+import * as C from '../../shared';
 
 class FaqQuestion extends React.Component {
   static propTypes = {
@@ -8,9 +9,8 @@ class FaqQuestion extends React.Component {
   render() {
     const {question} = this.props;
     return (
-        <div className='faq-question'>
-          <p className='question-name'>{question.name}</p>
-          <p className='question-content'>{question.content}</p>
+        <div className='faq-question clickable'>
+          <C.Text className='question-name'>{question.name}</C.Text>
         </div>
     );
   }
@@ -24,10 +24,20 @@ class FaqSection extends React.Component {
   render() {
     const {section} = this.props;
     return (
-        <div className='faq-section'>
-          <div className='section-name'>
-            {section.name}
-          </div>
+      <C.Container
+        isFullWidth={true}
+        className='faq-section'
+      >
+        <C.Text
+          fontSize={4}
+          className='section-name add-padding-side'
+        >
+          {section.name}
+        </C.Text>
+        <C.Container
+          isFullWidth={true}
+          className='question-container'
+        >
           {section.faqQuestions.map((question, i) => {
             return (
               <FaqQuestion
@@ -36,9 +46,11 @@ class FaqSection extends React.Component {
               />
             );
           })}
-        </div>
+        </C.Container>
+      </C.Container>
     );
   }
 }
 
 export default FaqSection;
+
