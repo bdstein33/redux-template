@@ -3,7 +3,8 @@ import * as C from '../../shared';
 
 class FaqQuestion extends React.Component {
   static propTypes = {
-    question: React.PropTypes.object
+    question: React.PropTypes.object,
+    onClick: React.PropTypes.func
   }
 
   render() {
@@ -53,4 +54,3 @@ class FaqSection extends React.Component {
 }
 
 export default FaqSection;
-

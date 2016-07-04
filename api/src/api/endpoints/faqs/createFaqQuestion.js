@@ -1,14 +1,26 @@
-import _ from 'lodash';
-import {faqSectionSchema} from '../../joiSchema';
-import {isValid, plain} from '../../util';
-import faqService from './_faqService';
+import {faqQuestionSchema} from '../../joiSchema';
+import {
+  DBQuery,
+  isValid,
+  plain
+} from '../../util';
 
 export default function createFaq(context, input) {
-  return isValid(input, faqSectionSchema, ['faqId', 'name'], ['id'])
+  return isValid(input, faqQuestionSchema, ['sectionId', 'name', 'content'], ['id'])
     .then(() => {
-      // Create FAQ
-      return context.db.faqSection.create(input, {transaction: context.transaction});
-    }).then(createdFaq => {
-      return plain(createdFaq);
+      return DBQuery.getOne(
+        context,
+        'faqQuestion',
+        {
+          where: input,
+          error: 'AlreadyExists'
+        }
+      );
+    })
+    .then(() => {
+      return context.db.faqQuestion.create(input, {transaction: context.transaction});
+    })
+    .then(createdFaqQuestion => {
+      return plain(createdFaqQuestion);
     });
 }

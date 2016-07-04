@@ -11,7 +11,7 @@ textarea:focus {
   box-sizing: border-box;
   font-size: $font-size-2;
   margin: 10px 0;
-  padding: 10px;
+  padding: $spacing-main / 2;
   width: 100%;
 
   &:focus {
@@ -25,6 +25,8 @@ input {
 
 .form-input-label {
   margin-bottom: -5px;
+  text-align: left;
+  padding-left: $spacing-main / 2;
 }
 
 .text-area {
@@ -32,10 +34,17 @@ input {
   resize: none;
 }
 
+.select-input {
+  @extend %form-input;
+  background-color: $white;
+  height: 36px; // For some reason variabel isn't working
+  padding: 8px;
+}
+
 .submit-input {
   background-color: $blue-3;
   border: 1px solid $blue-3;
-  padding: 10px;
+  padding: $spacing-main / 2;
 
   &:hover {
     background-color: $blue-4;

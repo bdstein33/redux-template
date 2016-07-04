@@ -1,12 +1,26 @@
 import {faqSectionSchema} from '../../joiSchema';
-import {isValid, plain} from '../../util';
+import {
+  DBQuery,
+  isValid,
+  plain
+} from '../../util';
 
 export default function createFaq(context, input) {
   return isValid(input, faqSectionSchema, ['faqId', 'name'], ['id'])
     .then(() => {
-      // Create FAQ
+      return DBQuery.getOne(
+        context,
+        'faqSection',
+        {
+          where: input,
+          error: 'AlreadyExists'
+        }
+      );
+    })
+    .then(() => {
       return context.db.faqSection.create(input, {transaction: context.transaction});
-    }).then(createdFaq => {
-      return plain(createdFaq);
+    })
+    .then(createdFaqSection => {
+      return plain(createdFaqSection);
     });
 }

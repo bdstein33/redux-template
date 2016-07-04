@@ -22,10 +22,21 @@ class Modal extends React.Component {
 
   @autobind
   handleKeyDown(e) {
-    if (e.keyCode === 8 &&
-    this.props.modal.visible &&
-    document.activeElement.nodeName !== 'INPUT') { // Backspace
-      e.preventDefault();
+    /*
+      If the backspace key is pressed and the active element is a form input,
+      delete the last character (normal behavior).  Otherwise, prevent the default
+      behavior of navigating back to the last page.
+
+      If the escape key is pressed, close the modal
+    */
+    const inputNodes = ['INPUT', 'TEXTAREA'];
+
+    if (
+      e.keyCode === 8 &&
+      this.props.modal.visible &&
+      inputNodes.indexOf(document.activeElement.nodeName) === -1
+    ) { // Backspace
+      // e.preventDefault();
     } else if (e.keyCode === 27) { // Esc
       this.props.actions.hideModal();
     }
@@ -45,6 +56,7 @@ class Modal extends React.Component {
       ...otherProps
     } = this.props;
 
+    console.log('MODAL COMPONENT:', modal);
     return (
       <div className={!modal.visible ? 'hide' : 'show'}>
         <div className='modal__page-background'>

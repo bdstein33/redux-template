@@ -1,13 +1,13 @@
 import React from 'react';
 import {autobind} from 'core-decorators';
 
-import storeConnect from '../addons/storeConnect';
-import {modalActions, authActions} from '../../actions';
+import storeConnect from '../../addons/storeConnect';
+import {modalActions, authActions} from '../../../actions';
 
-import SignUp from './SignUp';
+import SignUpModal from './SignUpModal';
 import * as C from '../../shared';
 
-class LogIn extends React.Component {
+class LogInModal extends React.Component {
   static propTypes = {
     actions: React.PropTypes.object.isRequired
   }
@@ -19,7 +19,7 @@ class LogIn extends React.Component {
 
   @autobind
   showSignUp() {
-    this.props.actions.showModal(<SignUp />, 'Sign Up');
+    this.props.actions.showModal(<SignUpModal />, 'Sign Up');
   }
 
   render() {
@@ -28,7 +28,7 @@ class LogIn extends React.Component {
         <C.Form onSubmit={this.submitLogIn}>
           <C.TextInput name='email' placeholder='Email' autoComplete='off' autoFocus={true}/>
           <C.TextInput name='password' type='password' placeholder='Password'/>
-          <C.Submit value='Log In'/>
+          <C.Submit value='LOG IN'/>
         </C.Form>
 
         <div className='bottom'>
@@ -41,4 +41,4 @@ class LogIn extends React.Component {
   }
 }
 
-export default storeConnect(null, modalActions, authActions)(LogIn);
+export default storeConnect(null, modalActions, authActions)(LogInModal);

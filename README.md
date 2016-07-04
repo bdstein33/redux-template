@@ -1,11 +1,11 @@
 # To Do:
+- Add disabled prop to buttons and disable NEW QUESTION BUTTON if there are no sections
 
 - Tests for endpoints (dev optimization)
 
 - Refactor routes to be in their own file
-- Look into page flicker issue
 
-- Figure out why react-router stalls out after a few navigations
+- Use Promise.resolve to handle errors in actionCreator
 
 - SCSS linting
 - Add scopes to models (in particular password vs regular scope for user)

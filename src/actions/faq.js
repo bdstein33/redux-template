@@ -25,7 +25,30 @@ export default {
         url: 'faqs',
         method: 'post'
       },
-      success: ['HIDE_MODAL']
+      success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
+    });
+  },
+
+  createFaqQuestion(data) {
+    return actionCreator('CREATE_FAQ_QUESTION', data, {
+      request: {
+        url: 'faqs/questions',
+        method: 'post'
+      },
+      success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
+    });
+  },
+
+  createFaqSection(data) {
+    return actionCreator('CREATE_FAQ_SECTION', data, {
+      request: {
+        url: 'faqs/sections',
+        method: 'post'
+      },
+      success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
     });
   }
 };

@@ -8,7 +8,8 @@ router.post('/', endpointLoader('faqs/createFaq'));
 router.delete('/', endpointLoader('faqs/deleteFaq'));
 router.get('/', endpointLoader('faqs/getFaq'));
 
-router.post('/section', endpointLoader('faqs/createFaqSection'));
+router.post('/sections', endpointLoader('faqs/createFaqSection'));
+router.post('/questions', endpointLoader('faqs/createFaqQuestion'));
 
 
 router.get('/user', endpointLoader('faqs/getUserFaqs'));

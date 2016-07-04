@@ -7,7 +7,8 @@ class Button extends React.Component {
     className: React.PropTypes.string,
     children: React.PropTypes.node,
     bStyle: React.PropTypes.oneOf(['solid', 'transparent']),
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    // disabled: React.PropTypes.boolean  TO DO
   };
 
   static defaultProps = {

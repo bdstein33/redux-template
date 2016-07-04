@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {faqSchema} from '../../joiSchema';
 import {isValid, DBQuery} from '../../util';
 

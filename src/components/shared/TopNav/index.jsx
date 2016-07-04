@@ -4,7 +4,7 @@ import {autobind} from 'core-decorators';
 import storeConnect from '../../addons/storeConnect';
 
 import TopNavLink from './TopNavLink';
-import LogIn from '../../modal/LogIn';
+import LogInModal from '../../pages/Landing/LogInModal';
 import {modalActions, authActions} from '../../../actions';
 import Container from '../layout/Container';
 
@@ -16,7 +16,7 @@ class TopNav extends React.Component {
 
   @autobind
   showLogin() {
-    this.props.actions.showModal(<LogIn />, 'Log In');
+    this.props.actions.showModal(<LogInModal />, 'Log In');
   }
 
   @autobind

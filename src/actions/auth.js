@@ -8,6 +8,7 @@ export default {
         method: 'post'
       },
       success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR'],
       navigate: '/'
     });
   },
@@ -19,6 +20,7 @@ export default {
         method: 'get'
       },
       success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR'],
       navigate: '/'
     });
   },

@@ -14,7 +14,6 @@ export default controllerName => {
     return new Promise(resolve => {
       resolve(db.sequelize.transaction(transaction => {
         context.transaction = transaction;
-
         return endpoint.call(null, context, sanatizedInput);
       }));
     }).then(output => {

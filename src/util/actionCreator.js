@@ -18,7 +18,6 @@ export default (name, data, options = {}) => {
      .then(result => {
        if (result.error) {
          dispatch({type: `${name}__ERROR`, error: result.error});
-
          if (options.error) {
            options.error.forEach(action => {
              dispatch({type: action, data: result});

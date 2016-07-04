@@ -26,6 +26,9 @@ export default (input, joiSchema, requiredInputs, forbiddenInputs) => {
       const errorText = err.details.map(error => {
         return error.message;
       }).join(', ').replace(/['"]+/g, '');
+
+      console.error(`VALIDATION ERROR: ${errorText}`);
+
       return Promise.reject(new Error(errorText));
     });
 };

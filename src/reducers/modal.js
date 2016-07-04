@@ -23,15 +23,7 @@ export default (state = initialState, action) => {
       });
     case 'MODAL_ERROR':
       return Object.assign({}, state, {
-        error: action.error
-      });
-    case 'SIGNUP__ERROR':
-      return Object.assign({}, state, {
-        error: action.error
-      });
-    case 'LOGIN__ERROR':
-      return Object.assign({}, state, {
-        error: action.error
+        error: action.data.error
       });
     default:
       return state;

@@ -10,7 +10,8 @@ export default function createFaq(context, input) {
     .then(() => {
       // Create FAQ
       return context.db.faq.create(_.omit(input, 'sections'), {transaction: context.transaction});
-    }).then(createdFaq => {
+    })
+    .then(createdFaq => {
       output = plain(createdFaq);
 
       if (!input.sections || input.sections.length === 0) {
@@ -21,7 +22,8 @@ export default function createFaq(context, input) {
       return Promise.all(input.sections.map(section => {
         return faqService.createSection(context, _.merge(section, {faqId: createdFaq.id}));
       }));
-    }).then(sections => {
+    })
+    .then(sections => {
       output.sections = sections;
       return output;
     });

@@ -113,6 +113,10 @@ html,
   }
 }
 
+.no-margin {
+  margin: 0;
+}
+
 .add-padding {
   padding: $spacing-main;
 
@@ -135,4 +139,8 @@ html,
   &-bottom {
     padding-bottom: $spacing-main;
   }
+}
+
+.no-padding {
+  padding: 0;
 }
