@@ -8,3 +8,4 @@ export Link from './Link';
 export Right from './Right';
 export TopNav from './TopNav';
 export Text from './Text';
+export TextEditor from './TextEditor';

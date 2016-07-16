@@ -10,9 +10,17 @@ class FaqQuestion extends React.Component {
   render() {
     const {question} = this.props;
     return (
-        <div className='faq-question clickable'>
-          <C.Text className='question-name'>{question.name}</C.Text>
-        </div>
+        <C.Container className='faq-question' isFullWidth={true}>
+          <C.Row columns={12} style={{height: '40px'}}>
+            <C.Column columns={9}>
+              <C.Text className='question-name'>{question.name}</C.Text>
+            </C.Column>
+            <C.Column columns={3}>
+               <C.Text className='right clickable'>DELETE</C.Text>
+               <C.Text className='right clickable' style={{marginRight: 16}}>EDIT</C.Text>
+            </C.Column>
+          </C.Row>
+        </C.Container>
     );
   }
 }

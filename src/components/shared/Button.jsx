@@ -7,6 +7,7 @@ class Button extends React.Component {
     className: React.PropTypes.string,
     children: React.PropTypes.node,
     bStyle: React.PropTypes.oneOf(['solid', 'transparent']),
+    bColor: React.PropTypes.oneOf(['blue', 'teal', 'red', 'yellow']),
     onClick: React.PropTypes.func,
     // disabled: React.PropTypes.boolean  TO DO
   };
