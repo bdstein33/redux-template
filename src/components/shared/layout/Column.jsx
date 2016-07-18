@@ -13,13 +13,19 @@ export default class Column extends React.Component {
   };
 
   render() {
+    const {
+      columns,
+      className,
+      ...otherProps
+    } = this.props;
+
     return (
       <div
-        {...this.props}
+        {...otherProps}
         className={classNames(
           'column',
-          `column-${this.props.columns}`,
-          this.props.className
+          `column-${columns}`,
+          className
         )}
       >
         {this.props.children}

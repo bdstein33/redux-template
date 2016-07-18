@@ -56,7 +56,6 @@ class Modal extends React.Component {
       ...otherProps
     } = this.props;
 
-    console.log('MODAL COMPONENT:', modal);
     return (
       <div className={!modal.visible ? 'hide' : 'show'}>
         <div className='modal__page-background'>

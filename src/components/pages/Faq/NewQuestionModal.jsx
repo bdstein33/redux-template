@@ -14,12 +14,28 @@ class NewQuestionModal extends React.Component {
     user: React.PropTypes.object
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      answer: null
+    };
+  }
+
   @autobind
   createFaqQuestion(data) {
+    data.answer = this.state.answer;
+
     return this.props.actions.createFaqQuestion(data)
       .then(() => {
         return this.props.actions.getFaq({id: this.props.faq.id, userId: this.props.user.id});
       });
+  }
+
+  @autobind
+  updateAnswer(answer) {
+    this.setState({
+      answer
+    });
   }
 
   render() {
@@ -48,11 +64,8 @@ class NewQuestionModal extends React.Component {
               autoFocus={true}
               rows={2}
             />
-            <C.TextArea
-              name='content'
-              label='Answer'
-              rows={6}
-            />
+            <C.Text style={{textAlign: 'left', paddingLeft: 8}}>Answer</C.Text>
+            <C.TextEditor onChange={this.updateAnswer}/>
             <C.Row columns={6}>
               <C.Column columns={2} className='no-padding'>
                 <C.Submit value='CREATE'/>
@@ -65,3 +78,11 @@ class NewQuestionModal extends React.Component {
 }
 
 export default storeConnect([{faq: 'faq.faq'}, {user: 'application.user'}], faqActions)(NewQuestionModal);
+
+/*
+<C.TextArea
+  name='content'
+  label='Answer'
+  rows={6}
+/>
+*/

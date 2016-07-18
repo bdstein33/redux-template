@@ -26,8 +26,13 @@ export default class Row extends React.Component {
   };
 
   render() {
-    const align = isArray(this.props.align) ? this.props.align : [this.props.align];
-    let columns = this.props.columns;
+    let {
+      columns,
+      align,
+      ...otherProps
+    } = this.props;
+
+    align = isArray(align) ? align : [align];
 
     if (!columns) {
       columns = 0;
@@ -41,7 +46,7 @@ export default class Row extends React.Component {
 
     return (
       <div
-        {...this.props}
+        {...otherProps}
         className={classNames(
           'row',
           `row-${columns}`,

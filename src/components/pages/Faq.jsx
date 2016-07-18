@@ -46,14 +46,14 @@ class Faq extends React.Component {
         <Hero title={faq.name}/>
         <C.Row align='right' className='add-margin'>
           <C.Button
-            bType='transparent'
+            bStyle='transparent'
             className='add-margin-left'
             onClick={this.showNewSectionModal}
           >
             NEW SECTION
           </C.Button>
           <C.Button
-            bType='transparent'
+            bStyle='transparent'
             className='add-margin-left'
             onClick={this.showNewQuestionModal}
           >
