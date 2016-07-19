@@ -2,7 +2,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register ./api/test/**/*.js",
     "start": "node src/start.js",
-    "api": "node api/src/start.js",
+    "api": "nodemon --watch api api/src/start.js",
     "lint": "eslint --quiet --ext .js,.jsx ./src && scss-lint src/scss --exclude src/scss/_normalize.scss"
   },
   "author": "",

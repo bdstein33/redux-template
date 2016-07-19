@@ -5,7 +5,10 @@ import Text from '../Text';
 class SelectInput extends React.Component {
   static propTypes = {
     name: React.PropTypes.string.isRequired,
-    defaultValue: React.PropTypes.string,
+    defaultValue: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
     label: React.PropTypes.string,
     className: React.PropTypes.string,
     options: React.PropTypes.array,

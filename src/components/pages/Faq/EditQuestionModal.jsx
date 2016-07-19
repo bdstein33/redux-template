@@ -8,6 +8,7 @@ import * as C from '../../shared';
 
 class NewQuestionModal extends React.Component {
   static propTypes = {
+    question: React.PropTypes.object,
     // From storeConnect
     actions: React.PropTypes.object,
     faq: React.PropTypes.object,
@@ -17,15 +18,24 @@ class NewQuestionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: null
+      content: props.question.content
     };
   }
 
   @autobind
-  createFaqQuestion(data) {
+  updateFaqQuestion(data) {
     data.content = this.state.content.toString('html');
+    data.id = this.props.question.id;
+    return this.props.actions.updateFaqQuestion(data)
+      .then(() => {
+        return this.props.actions.getFaq({id: this.props.faq.id, userId: this.props.user.id});
+      });
+  }
 
-    return this.props.actions.createFaqQuestion(data)
+  @autobind
+  deleteFaqQuestion() {
+    confirm('Are you sure you want to delete this question?');
+    return this.props.actions.deleteFaqQuestion({id: this.props.question.id})
       .then(() => {
         return this.props.actions.getFaq({id: this.props.faq.id, userId: this.props.user.id});
       });
@@ -46,15 +56,18 @@ class NewQuestionModal extends React.Component {
       };
     });
 
+    const {question} = this.props;
+
     return (
       <div className='content-container' style={{width: 700}}>
-        <C.Form onSubmit={this.createFaqQuestion}>
+        <C.Form onSubmit={this.updateFaqQuestion}>
           <C.Row columns={6}>
             <C.Column columns={2} className='no-padding'>
               <C.SelectInput
                 name='sectionId'
                 label='Section'
                 options={sectionOptions}
+                defaultValue={question.sectionId}
               />
             </C.Column>
           </C.Row>
@@ -63,14 +76,25 @@ class NewQuestionModal extends React.Component {
               placeholder='Question'
               autoFocus={true}
               rows={2}
+              defaultValue={question.name}
             />
             <C.TextEditor
               onChange={this.updateContent}
               placeholder='Answer'
+              defaultValue={question.content}
             />
             <C.Row columns={6}>
               <C.Column columns={2} className='no-padding'>
-                <C.Submit value='CREATE'/>
+                <C.Submit value='UPDATE'/>
+              </C.Column>
+              <C.Column columns={2} className='no-padding'></C.Column>
+              <C.Column columns={2} className='no-padding'>
+                <C.Button
+                  text='DELETE'
+                  bColor='red'
+                  onClick={this.deleteFaqQuestion}
+                  style={{width: '100%', marginTop: 10, paddingLeft: 0, paddingRight: 0}}
+                />
               </C.Column>
             </C.Row>
         </C.Form>
@@ -79,4 +103,10 @@ class NewQuestionModal extends React.Component {
   }
 }
 
-export default storeConnect([{faq: 'faq.faq'}, {user: 'application.user'}], faqActions)(NewQuestionModal);
+export default storeConnect(
+  [
+    {faq: 'faq.faq'},
+    {user: 'application.user'}
+  ],
+  faqActions
+)(NewQuestionModal);

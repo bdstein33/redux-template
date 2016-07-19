@@ -33,7 +33,7 @@ class TextArea extends React.Component {
         <textarea
           name={name}
           placeholder={placeholder}
-          value={defaultValue}
+          defaultValue={defaultValue}
           autoComplete='off'
           className={classNames('text-area', className)}
           {...otherProps}

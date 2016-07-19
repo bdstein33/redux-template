@@ -5,7 +5,7 @@ import {
   plain
 } from '../../util';
 
-export default function createFaq(context, input) {
+export default function createFaqQuestion(context, input) {
   return isValid(input, faqQuestionSchema, ['sectionId', 'name', 'content'], ['id'])
     .then(() => {
       return DBQuery.getOne(

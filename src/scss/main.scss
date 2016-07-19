@@ -143,3 +143,50 @@ html,
 .no-padding {
   padding: 0;
 }
+
+.background-color {
+  &-blue {
+    background-color: $blue-4;
+    border-color: $blue-4;
+  }
+
+  &-teal {
+    background-color: $teal-1;
+    border-color: $teal-1;
+  }
+
+  &-red {
+    background-color: $red-1;
+    border-color: $red-1;
+
+    &:hover {
+      background-color: $red-2;
+      border-color: $red-2;
+    }
+  }
+
+  &-yellow {
+    background-color: $yellow-1;
+    border-color: $yellow-1;
+
+  }
+}
+
+.color {
+  &-blue {
+    color: $blue-2;
+  }
+
+  &-teal {
+    color: $teal-1;
+  }
+
+  &-red {
+    color: $red-1;
+  }
+
+  &-yellow {
+    color: $yellow-1;
+
+  }
+}

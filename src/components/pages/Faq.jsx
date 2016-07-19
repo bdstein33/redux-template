@@ -2,14 +2,13 @@ import React from 'react';
 import {autobind} from 'core-decorators';
 
 import storeConnect from '../addons/storeConnect';
-
 import {faqActions, modalActions} from '../../actions';
-import Hero from '../shared/Hero';
 
+import * as C from '../shared';
+import Hero from '../shared/Hero';
 import FaqSection from './Faq/FaqSection';
 import NewQuestionModal from './Faq/NewQuestionModal';
 import NewSectionModal from './Faq/NewSectionModal';
-import * as C from '../shared';
 
 
 class Faq extends React.Component {
@@ -68,4 +67,11 @@ class Faq extends React.Component {
   }
 }
 
-export default storeConnect([{faq: 'faq.faq'}, {user: 'application.user'}], modalActions, faqActions)(Faq);
+export default storeConnect(
+  [
+    {faq: 'faq.faq'},
+    {user: 'application.user'}
+  ],
+  modalActions,
+  faqActions
+)(Faq);

@@ -6,7 +6,7 @@ export default {
       request: {
         url: 'faqs/user',
         method: 'get'
-      }
+      },
     });
   },
 
@@ -15,7 +15,8 @@ export default {
       request: {
         url: 'faqs',
         method: 'get'
-      }
+      },
+      success: ['HIDE_MODAL'],
     });
   },
 
@@ -36,7 +37,29 @@ export default {
         url: 'faqs/questions',
         method: 'post'
       },
-      success: ['HIDE_MODAL'],
+      // success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
+    });
+  },
+
+  updateFaqQuestion(data) {
+    return actionCreator('UPDATE_FAQ_QUESTION', data, {
+      request: {
+        url: 'faqs/questions',
+        method: 'put'
+      },
+      // success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
+    });
+  },
+
+  deleteFaqQuestion(data) {
+    return actionCreator('DELETE_FAQ_QUESTION', data, {
+      request: {
+        url: 'faqs/questions',
+        method: 'delete'
+      },
+      // success: ['HIDE_MODAL'],
       error: ['MODAL_ERROR']
     });
   },

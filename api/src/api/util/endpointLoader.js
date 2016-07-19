@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import db from '../../db';
 import sanitizeInput from './sanitizeInput';
+import Debug from 'debug';
 
+const debug = Debug('Error');
 
 /* Wraps input submitted to API into payload object and returns output from promisified controller function */
 export default controllerName => {
@@ -20,6 +22,7 @@ export default controllerName => {
       req.session.save();
       res.json(output);
     }).catch(error => {
+      debug(error);
       res.json({error: error.message});
     });
   };

@@ -25,7 +25,6 @@ export default (name, data, options = {}) => {
          }
        } else {
          dispatch({type: `${name}`, data: result});
-
          if (options.success) {
            options.success.forEach(action => {
              dispatch({type: action, data: result});
