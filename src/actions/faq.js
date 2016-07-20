@@ -73,6 +73,28 @@ export default {
       success: ['HIDE_MODAL'],
       error: ['MODAL_ERROR']
     });
+  },
+
+  updateFaqSection(data) {
+    return actionCreator('UPDATE_FAQ_SECTION', data, {
+      request: {
+        url: 'faqs/sections',
+        method: 'put'
+      },
+      // success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR'],
+    });
+  },
+
+  deleteFaqSection(data) {
+    return actionCreator('DELETE_FAQ_SECTION', data, {
+      request: {
+        url: 'faqs/sections',
+        method: 'delete'
+      },
+      // success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
+    });
   }
 };
 

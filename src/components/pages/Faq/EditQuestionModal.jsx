@@ -34,11 +34,13 @@ class NewQuestionModal extends React.Component {
 
   @autobind
   deleteFaqQuestion() {
-    confirm('Are you sure you want to delete this question?');
-    return this.props.actions.deleteFaqQuestion({id: this.props.question.id})
-      .then(() => {
-        return this.props.actions.getFaq({id: this.props.faq.id, userId: this.props.user.id});
-      });
+    console.log(window.location);
+    if (confirm('Are you sure you want to delete this question?')) {
+      return this.props.actions.deleteFaqQuestion({id: this.props.question.id})
+        .then(() => {
+          return this.props.actions.getFaq({id: this.props.faq.id, userId: this.props.user.id});
+        });
+    }
   }
 
   @autobind

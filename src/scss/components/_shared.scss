@@ -19,14 +19,7 @@
   text-align: center;
 
   &__solid {
-    background-color: $blue-3;
-    border: 1px solid $blue-3;
     color: $white;
-
-    &:hover {
-      background-color: $blue-4;
-      border: 1px solid $blue-4;
-    }
   }
 
   &__transparent {

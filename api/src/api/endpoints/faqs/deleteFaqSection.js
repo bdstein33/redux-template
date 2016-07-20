@@ -1,4 +1,4 @@
-import {faqQuestionSchema} from '../../joiSchema';
+import {faqSectionSchema} from '../../joiSchema';
 import {
   DBQuery,
   isValid,
@@ -6,11 +6,11 @@ import {
 } from '../../util';
 
 export default function updateFaqQuestion(context, input) {
-  return isValid(input, faqQuestionSchema, ['id'])
+  return isValid(input, faqSectionSchema, ['id'])
     .then(() => {
       return DBQuery.getOne(
         context,
-        'faqQuestion',
+        'faqSection',
         {
           where: {
             id: input.id
@@ -20,10 +20,10 @@ export default function updateFaqQuestion(context, input) {
         }
       );
     })
-    .then(question => {
-      return question.update(input, {transaction: context.transaction});
+    .then(section => {
+      return section.destroy(input, {transaction: context.transaction});
     })
-    .then(updatedFaqQuestion => {
-      return plain(updatedFaqQuestion);
+    .then(deletedFaqSection => {
+      return plain(deletedFaqSection);
     });
 }

@@ -23,7 +23,7 @@ export default function updateFaqQuestion(context, input) {
     .then(question => {
       return question.destroy(input, {transaction: context.transaction});
     })
-    .then(createdFaqQuestion => {
-      return plain(createdFaqQuestion);
+    .then(deletedFaqQuestion => {
+      return plain(deletedFaqQuestion);
     });
 }

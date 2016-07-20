@@ -11,7 +11,8 @@ router.post('/', endpointLoader('faqs/createFaq'));
 // router.delete('/', endpointLoader('faqs/deleteFaq'));
 
 router.post('/sections', endpointLoader('faqs/createFaqSection'));
-
+router.put('/sections', endpointLoader('faqs/updateFaqSection'));
+router.delete('/sections', endpointLoader('faqs/deleteFaqSection'));
 
 router.post('/questions', endpointLoader('faqs/createFaqQuestion'));
 router.put('/questions', endpointLoader('faqs/updateFaqQuestion'));

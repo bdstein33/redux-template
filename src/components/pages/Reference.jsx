@@ -195,8 +195,15 @@ class Reference extends React.Component {
         </Section>
 
         <Section title='Buttons'>
+
           <C.Button text='Button' />
-          <C.Button text='Button' bStyle='transparent' style={{marginLeft: 16}}/>
+          <C.Button text='Button' bStyle='transparent' className='add-margin-left'/>
+          <C.Button text='Button' bColor='red' className='add-margin-left'/>
+          <C.Button text='Button' bColor='red' bStyle='transparent' className='add-margin-left'/>
+          <C.Button text='Button' bColor='teal' className='add-margin-left'/>
+          <C.Button text='Button' bColor='teal' bStyle='transparent' className='add-margin-left'/>
+          <C.Button text='Button' bColor='yellow' className='add-margin-left'/>
+          <C.Button text='Button' bColor='yellow' bStyle='transparent' className='add-margin-left'/>
         </Section>
 
         <Section title='Hero'>

@@ -58,6 +58,13 @@ class Faq extends React.Component {
           >
             NEW QUESTION
           </C.Button>
+          <C.Button
+            bStyle='transparent'
+            className='add-margin-left'
+            onClick={this.showNewQuestionModal}
+          >
+            DELETE FAQ
+          </C.Button>
         </C.Row>
         {faq.sections.map((faqSection, i) => {
           return <FaqSection section={faqSection} key={`FaqSection-${i}`}/>;

@@ -1,11 +1,26 @@
 import React from 'react';
+import {autobind} from 'core-decorators';
+
+import storeConnect from '../../addons/storeConnect';
+import {modalActions} from '../../../actions';
 
 import * as C from '../../shared';
+import EditSectionModal from './EditSectionModal';
 import FaqQuestion from './FaqQuestion';
 
 class FaqSection extends React.Component {
   static propTypes = {
-    section: React.PropTypes.object
+    section: React.PropTypes.object,
+    // From storeConnect
+    actions: React.PropTypes.object
+  }
+
+  @autobind
+  showEditSectionModal() {
+    this.props.actions.showModal(
+      <EditSectionModal section={this.props.section}/>,
+      'Edit Section'
+    );
   }
 
   render() {
@@ -18,6 +33,7 @@ class FaqSection extends React.Component {
         <C.Text
           fontSize={4}
           className='section-name add-padding-side clickable color-blue'
+          onClick={this.showEditSectionModal}
         >
           {section.name}
         </C.Text>
@@ -39,4 +55,8 @@ class FaqSection extends React.Component {
   }
 }
 
-export default FaqSection;
+export default storeConnect(
+  null,
+  modalActions
+)(FaqSection);
+

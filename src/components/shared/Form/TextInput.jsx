@@ -28,7 +28,7 @@ class TextInput extends React.Component {
           type='text'
           name={name}
           placeholder={placeholder}
-          value={defaultValue}
+          defaultValue={defaultValue}
           autoComplete='off'
           className={classNames('text-input', className)}
           {...otherProps}

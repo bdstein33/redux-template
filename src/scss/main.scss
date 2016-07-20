@@ -148,11 +148,21 @@ html,
   &-blue {
     background-color: $blue-4;
     border-color: $blue-4;
+
+    &:hover {
+      background-color: $blue-5;
+      border-color: $blue-5;
+    }
   }
 
   &-teal {
     background-color: $teal-1;
     border-color: $teal-1;
+
+    &:hover {
+      background-color: $teal-2;
+      border-color: $teal-2;
+    }
   }
 
   &-red {
@@ -169,24 +179,56 @@ html,
     background-color: $yellow-1;
     border-color: $yellow-1;
 
+    &:hover {
+      background-color: $yellow-2;
+      border-color: $yellow-2;
+    }
+  }
+
+  &-white {
+    background-color: $white;
   }
 }
 
 .color {
   &-blue {
-    color: $blue-2;
+    color: $blue-4;
+
+    &:hover {
+      background-color: $white;
+      border-color: $blue-5;
+      color: $blue-5;
+    }
   }
 
   &-teal {
     color: $teal-1;
+
+    &:hover {
+      background-color: $white;
+      border-color: $teal-2;
+      color: $teal-2;
+    }
   }
 
   &-red {
     color: $red-1;
+
+    &:hover {
+      background-color: $white;
+      border-color: $red-2;
+      color: $red-2;
+    }
   }
 
   &-yellow {
     color: $yellow-1;
+
+    &:hover {
+      background-color: $white;
+      border-color: $yellow-2;
+      color: $yellow-2;
+    }
 
   }
 }
