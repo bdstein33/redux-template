@@ -19,6 +19,10 @@ export default (sequelize, DataTypes) => {
     },
     password: {
       type: DataTypes.STRING
+    },
+    apiToken: {
+      field: 'api_token',
+      type: DataTypes.STRING
     }
   };
 

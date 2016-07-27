@@ -6,6 +6,8 @@ router.get('/user', endpointLoader('faqs/getUserFaqs'));
 
 router.get('/', endpointLoader('faqs/getFaq'));
 router.post('/', endpointLoader('faqs/createFaq'));
+router.put('/', endpointLoader('faqs/updateFaq'));
+router.delete('/', endpointLoader('faqs/deleteFaq'));
 
 // router.update('/', endpointLoader('faq/updateFaq'));
 // router.delete('/', endpointLoader('faqs/deleteFaq'));

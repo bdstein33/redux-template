@@ -31,6 +31,27 @@ export default {
     });
   },
 
+  updateFaq(data) {
+    return actionCreator('UPDATE_FAQ', data, {
+      request: {
+        url: 'faqs',
+        method: 'put'
+      },
+      // success: ['HIDE_MODAL'],
+      error: ['MODAL_ERROR']
+    });
+  },
+
+  deleteFaq(data) {
+    return actionCreator('DELETE_FAQ', data, {
+      request: {
+        url: 'faqs',
+        method: 'delete'
+      },
+      navigate: '/faqs'
+    });
+  },
+
   createFaqQuestion(data) {
     return actionCreator('CREATE_FAQ_QUESTION', data, {
       request: {

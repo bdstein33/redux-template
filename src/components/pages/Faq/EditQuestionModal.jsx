@@ -34,7 +34,6 @@ class NewQuestionModal extends React.Component {
 
   @autobind
   deleteFaqQuestion() {
-    console.log(window.location);
     if (confirm('Are you sure you want to delete this question?')) {
       return this.props.actions.deleteFaqQuestion({id: this.props.question.id})
         .then(() => {

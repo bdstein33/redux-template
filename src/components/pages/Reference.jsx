@@ -103,19 +103,22 @@ class Reference extends React.Component {
             <ColorBlock name='$blue-2' color='#006680'/>
             <ColorBlock name='$blue-3' color='#00a6cf'/>
             <ColorBlock name='$blue-4' color='#3ac1e1'/>
+            <ColorBlock name='$blue-5' color='#72cee4'/>
           </ColorBlockContainer>
 
           <ColorBlockContainer>
             <ColorBlock name='$teal-1' color='#0dceaf'/>
+            <ColorBlock name='$teal-2' color='#78dece'/>
             <ColorBlock name='$red-1' color='#e7465a'/>
+            <ColorBlock name='$red-2' color='#dc848f'/>
             <ColorBlock name='$yellow-1' color='#fdb813'/>
+            <ColorBlock name='$yellow-2' color='#f7cd68'/>
           </ColorBlockContainer>
 
           <ColorBlockContainer>
             <ColorBlock name='$gray-1' color='#333'/>
             <ColorBlock name='$gray-2' color='#666'/>
             <ColorBlock name='$gray-3' color='#828282'/>
-            <ColorBlock name='???' color='#9b9997'/>
             <ColorBlock name='$gray-4' color='#d2d2d2'/>
             <ColorBlock name='$gray-5' color='#efeeec'/>
             <ColorBlock name='$gray-6' color='#fafafa'/>
@@ -232,3 +235,7 @@ class Reference extends React.Component {
 }
 
 export default storeConnect(['application'])(Reference);
+
+/*
+<ColorBlock name='???' color='#9b9997'/>
+*/

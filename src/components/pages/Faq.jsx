@@ -38,6 +38,13 @@ class Faq extends React.Component {
     );
   }
 
+  @autobind
+  deleteFaq() {
+    if (confirm('Are you sure you want to delete this FAQ?')) {
+      this.props.actions.deleteFaq({id: this.props.faq.id});
+    }
+  }
+
   render() {
     const {faq} = this.props;
     return (
@@ -60,8 +67,9 @@ class Faq extends React.Component {
           </C.Button>
           <C.Button
             bStyle='transparent'
+            bColor='red'
             className='add-margin-left'
-            onClick={this.showNewQuestionModal}
+            onClick={this.deleteFaq}
           >
             DELETE FAQ
           </C.Button>

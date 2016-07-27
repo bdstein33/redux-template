@@ -10,7 +10,12 @@ export default controllerName => {
   return (req, res) => {
     const context = {db, session: req.session},
       endpoint = require(`../endpoints/${controllerName}`),
-      input = Object.keys(req.query).length ? req.query : req.body,
+      input = _.merge(
+        {},
+        req.query,
+        req.params,
+        req.body
+      ),
       sanatizedInput = sanitizeInput(_.cloneDeep(input));
 
     return new Promise(resolve => {

@@ -6,7 +6,8 @@ import {
   DBQuery,
   isValid,
   PasswordEncryptor,
-  plain
+  plain,
+  randomString
 } from '../../util';
 
 export default (context, input) => {
@@ -24,12 +25,13 @@ export default (context, input) => {
       return PasswordEncryptor.hash(input.password);
     }).then(password => {
       input.password = password;
+      input.apiToken = randomString(36);
       return context.db.user.create(input, {transaction: context.transaction});
     }).then(user => {
       user = _.omit(plain(user), 'password');
       // Add user to session
       _.merge(context.session, {user});
-      
+
       return user;
     });
 };

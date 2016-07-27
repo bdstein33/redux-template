@@ -25,11 +25,24 @@ class Button extends React.Component {
       bColor,
       className
     } = this.props;
+
     if (this.props.bStyle === 'solid') {
-      return classNames('button', `button__${bStyle}`, `background-color-${bColor}`, className)
+      return classNames(
+        'button',
+        `button__${bStyle}`,
+        `background-color-${bColor}`,
+        className
+      );
     }
 
-    return classNames('button', `button__${bStyle}`, `background-color-${bColor}`, 'background-color-white', `color-${bColor}`, className)
+    return classNames(
+      'button',
+      `button__${bStyle}`,
+      `background-color-${bColor}`,
+      'background-color-white',
+      `color-${bColor}`,
+      className
+    );
   }
 
   render() {

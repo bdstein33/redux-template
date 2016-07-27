@@ -44,6 +44,8 @@ server.use(session({
   saveUninitialized: true
 }));
 
+server.use('/api/files', express.static(`${__dirname}/files`));
+
 /******************************
 API ROUTES
 ******************************/
