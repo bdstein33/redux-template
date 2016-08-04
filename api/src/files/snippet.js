@@ -19,6 +19,11 @@ var css = {
     border: '1px solid #828282',
     zIndex: 2147483647
   },
+  searchBarContainer: {
+    width: '100%',
+    height: '100%',
+    backgroundContainer: 'blue'
+  },
   searchBar: {
     fontSize: '24px',
     fontWeight: 300,
@@ -29,8 +34,36 @@ var css = {
     borderRight: 'none',
     borderBottom: '2px solid #828282',
     borderRadius: 0
+  },
+  faqSectionTitle: {
+    fontWeight:500,
+    fontSize: '20px',
+    marginBottom: '6px',
+    marginTop: '10px'
+  },
+  faqQuestionTitle: {
+    fontWeight: 300,
+    fontSize: '16px',
+    color: '#3F828F',
+    cursor: 'pointer',
+    marginBottom: '6px'
   }
 };
+
+function setStyle(component, styleObj) {
+  for (var style in styleObj) {
+    component.style[style] = styleObj[style];
+  }
+}
+
+function createComponent(elementType, styleObj) {
+  var copmonent = document.createElement(elementType);
+  for (var style in styleObj) {
+    copmonent.style[style] = styleObj[style];
+  }
+
+  return copmonent;
+}
 
 function getFaqQuestions(callback) {
   var xmlHttp = new XMLHttpRequest();
@@ -45,30 +78,17 @@ function getFaqQuestions(callback) {
 
 (function(window, document) {
   window.onload = function() {
-    var backgroundContainer = document.createElement('div'),
-      faqContainer = document.createElement('div'),
-      searchBar = document.createElement('input');
+    var backgroundContainer = createComponent('div', css.backgroundContainer)
+      faqContainer = createComponent('div', css.faqContainer),
+      searchBar = createComponent('input', css.searchBar);
 
-    // backgroundContainer
-    for (var style in css.backgroundContainer) {
-      backgroundContainer.style[style] = css.backgroundContainer[style];
-    }
-
-    // faqContainer
-    for (var style in css.faqContainer) {
-      faqContainer.style[style] = css.faqContainer[style];
-    }
-
-    // searchBar
-    for (var style in css.searchBar) {
-      searchBar.style[style] = css.searchBar[style];
-    }
 
     searchBar.setAttribute('type', 'text');
     searchBar.placeholder='Search';
 
     backgroundContainer.className = 'faq-modal';
     backgroundContainer.appendChild(faqContainer);
+
     faqContainer.appendChild(searchBar);
 
     getFaqQuestions(function(faq) {
@@ -77,19 +97,24 @@ function getFaqQuestions(callback) {
       faq.sections.forEach(function(section) {
         element = document.createElement('h2');
         element.innerHTML = section.name;
+
+        setStyle(element, css.faqSectionTitle)
         faqContainer.appendChild(element);
 
         section.faqQuestions.forEach(function(question) {
           element = document.createElement('h4');
           element.innerHTML = question.name;
+
+          setStyle(element, css.faqQuestionTitle)
           faqContainer.appendChild(element);
 
           element = document.createElement('div');
           element.innerHTML = question.content;
-          faqContainer.appendChild(element);
+          // faqContainer.appendChild(element);
         });
       })
       document.body.appendChild(backgroundContainer);
+
       window.addEventListener('keydown', function(event) {
         console.log(document.activeElement.nodeName);
         if (
@@ -97,10 +122,20 @@ function getFaqQuestions(callback) {
           event.keyCode === 72 // h
         ) {
           if (backgroundContainer.style.visibility === 'hidden') {
+            event.preventDefault();
             backgroundContainer.style.visibility = 'visible';
+            searchBar.value = '';
+            searchBar.focus();
           } else {
             backgroundContainer.style.visibility = 'hidden';
           }
+        }
+
+        if (
+          event.keyCode === 27 &&
+          backgroundContainer.style.visibility === 'visible'
+        ) {
+          backgroundContainer.style.visibility = 'hidden';
         }
       });
     });
